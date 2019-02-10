@@ -29,4 +29,12 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-virtual-scroll [items]="categorias">
+    <ion-item *virtualItem="let categoria">
+      <ion-icon name="{{ categoria.icono }}"></ion-icon>
+      <ion-label color="{{ categoria.color }}">{{ categoria.titulo }}</ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+  
 </ion-content>

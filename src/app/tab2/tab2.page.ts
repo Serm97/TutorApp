@@ -8,7 +8,34 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class Tab2Page {
 
-  constructor(public actionSheetController: ActionSheetController) { }
+  categorias: Array<any>;
+
+  constructor(public actionSheetController: ActionSheetController) { 
+    this.categorias = [
+      {
+        titulo:'Educación',
+        color:"primary",
+        icono:"book"
+      },
+      {
+        titulo:'Cocina',
+        color:"secondary",
+        icono:"restaurant"
+      },
+      {
+        titulo:'Estado fisico',
+        color:"tertiary",
+        icono:"bicycle"
+      },
+      {
+        titulo:'Otros',
+        color:"success",
+        icono:"pricetag"
+      }      
+    ];
+  }
+
+ 
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -50,7 +77,7 @@ export class Tab2Page {
     await actionSheet.present();
   }
 
-  async hola(){
+  async hola() {
     console.log('Hola Mundooo');
   }
 }
