@@ -49,4 +49,8 @@ export class Tab2Page {
     });
     await actionSheet.present();
   }
+
+  async hola(){
+    console.log('Hola Mundooo');
+  }
 }
