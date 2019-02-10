@@ -1,9 +1,66 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Registro Tutores
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="light">
+
+  <ion-progress-bar color="primary" value="1"></ion-progress-bar>
+  <ion-text color="primary">
+      <h5 style="text-align: center; font-weight: bold"><ion-icon name="list"></ion-icon> FORM</h5>
+  </ion-text>
+
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Last Name</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Number Contact</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating"> <b>@</b>  Email</ion-label>
+    <ion-input type="search" color="primary" pattern="tel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea></ion-textarea>
+  </ion-item> 
+    
+  <ion-list>
+      <ion-radio-group>
+        <ion-list-header>
+          <ion-label><b><ion-icon name="person"></ion-icon>  Profile</b></ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Student</ion-label>
+          <ion-radio slot="start" value="biff" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Graduated</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Teacher</ion-label>
+          <ion-radio slot="start" value="buford"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    
+    
+  
+</ion-content>
