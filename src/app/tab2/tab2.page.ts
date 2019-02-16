@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { UserServiceService } from '../services/user-service.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tab2',
@@ -13,12 +14,18 @@ export class Tab2Page {
 
   constructor(
     public actionSheetController: ActionSheetController,
-    public userService: UserServiceService
+    public userService: UserServiceService,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe((data) => { // Success
       this.users = data['results'];
+      this.storage.set('name', 'Max');
+      this.storage.set('Users', this.users);
+      this.storage.get('name').then((val) => {
+        console.log('name', val);
+      });
     },
       (error) => { console.error(error); }
     )
