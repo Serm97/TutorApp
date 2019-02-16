@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 import { UserServiceService } from '../services/user-service.service';
 import { Storage } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-tab2',
@@ -14,8 +15,10 @@ export class Tab2Page {
 
   constructor(
     public actionSheetController: ActionSheetController,
+    public alertController: AlertController,
     public userService: UserServiceService,
-    private storage: Storage
+    private storage: Storage,
+    private geolocation: Geolocation
   ) { }
 
   ngOnInit() {
@@ -57,6 +60,21 @@ export class Tab2Page {
         text: 'Favorite',
         icon: 'heart',
         handler: () => {
+          this.geolocation.getCurrentPosition().then((resp) => {
+            // resp.coords.latitude
+            // resp.coords.longitude
+            console.log(resp.coords);
+            this.showLocation(resp.coords);
+          }).catch((error) => {
+            console.log('Error getting location', error);
+          });
+
+          let watch = this.geolocation.watchPosition();
+          watch.subscribe((data) => {
+            // data can be a set of coordinates, or an error (if an error occurred).
+            // data.coords.latitude
+            // data.coords.longitude
+          });
           console.log('Favorite clicked');
         }
       }, {
@@ -71,7 +89,24 @@ export class Tab2Page {
     await actionSheet.present();
   }
 
+  async showLocation(coords) {
+    console.log(coords);
+    const alert = await this.alertController.create({      
+      header: 'Ubicacion',
+      subHeader: '¿Donde estoy?',
+      message: 'Tu ubicacion es \n latitud: '
+        + coords.latitude
+        + '\n Logitud: '
+        + coords.longitude
+        + '\n Presicion: '
+        + coords.accuracy,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
   async hola() {
     console.log('Hola Mundooo');
   }
+
 }
