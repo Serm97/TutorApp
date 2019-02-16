@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController, AlertController  } from '@ionic/angular';
+import​ { RegisterService } from '../../app/services/register.service';    
 
 
 @Component({
@@ -10,7 +11,24 @@ import { LoadingController, AlertController  } from '@ionic/angular';
 
 export class Tab3Page {
   constructor(public loadingController: LoadingController, 
-    public alertController: AlertController) {}
+    public alertController: AlertController,
+    public registerService: RegisterService) {}
+    
+    usersRegister: any[] = [];
+
+    ionViewDidLoad(){    
+      this.registerService.getUsersRegister()   
+      .subscribe(      
+          (data) => { // Success        
+            this.usersRegister = data['results'];
+            console.log(this.usersRegister);
+               
+          },
+          (error) =>{        
+            console.error(error);      
+          }    
+        ) 
+      }
     
     async presentLoading() {
       console.log("Enviadndo el Formulario...");
