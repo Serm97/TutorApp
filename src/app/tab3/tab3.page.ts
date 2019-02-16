@@ -9,17 +9,22 @@ import { LoadingController, AlertController  } from '@ionic/angular';
 })
 
 export class Tab3Page {
-  constructor(public loadingController: LoadingController, public alertController: AlertController) {}
+  constructor(public loadingController: LoadingController, 
+    public alertController: AlertController) {}
+    
     async presentLoading() {
+      console.log("Enviadndo el Formulario...");
+      
       const loading = await this.loadingController.create({
-        message: 'Hellooo',
+        message: 'Validate form...',
         duration: 2000
       });
+      
       await loading.present();
   
       const { role, data } = await loading.onDidDismiss();
   
-      console.log('Loading dismissed!');
+      alert('Data Send!');
     }
   
     async presentLoadingWithOptions() {
