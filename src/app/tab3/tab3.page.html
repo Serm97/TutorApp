@@ -13,7 +13,7 @@
       <h5 style="text-align: center; font-weight: bold"><ion-icon name="list"></ion-icon> FORM</h5>
   </ion-text>
 
-  <ion-item>
+  <ion-item>  
     <ion-label position="floating">Name</ion-label>
     <ion-input></ion-input>
   </ion-item>
@@ -37,6 +37,8 @@
       <ion-label position="floating">Description</ion-label>
       <ion-textarea></ion-textarea>
   </ion-item> 
+
+  
     
   <ion-list>
       <ion-radio-group>
@@ -45,22 +47,16 @@
         </ion-list-header>
     
         <ion-item>
-          <ion-label>Student</ion-label>
-          <ion-radio slot="start" value="biff" checked></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Graduated</ion-label>
-          <ion-radio slot="start" value="griff"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Teacher</ion-label>
-          <ion-radio slot="start" value="buford"></ion-radio>
+          <ion-label (click)="presentAlertRadio()">¿Role in the application?</ion-label>
+          <!-- <ion-radio slot="start" value="biff" checked></ion-radio> -->
         </ion-item>
       </ion-radio-group>
     </ion-list>
+
     
+<ion-item>
+  <ion-badge color="primary" (click)="presentAlertMultipleButtons()">Accept Conditions ?</ion-badge>
+</ion-item>
     
   
 </ion-content>
