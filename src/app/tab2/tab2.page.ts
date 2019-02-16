@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,34 +9,20 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class Tab2Page {
 
-  categorias: Array<any>;
+  users: any[] = [];
 
-  constructor(public actionSheetController: ActionSheetController) { 
-    this.categorias = [
-      {
-        titulo:'Educación',
-        color:"primary",
-        icono:"book"
-      },
-      {
-        titulo:'Cocina',
-        color:"secondary",
-        icono:"restaurant"
-      },
-      {
-        titulo:'Estado fisico',
-        color:"tertiary",
-        icono:"bicycle"
-      },
-      {
-        titulo:'Otros',
-        color:"success",
-        icono:"pricetag"
-      }      
-    ];
+  constructor(
+    public actionSheetController: ActionSheetController,
+    public userService: UserServiceService
+  ) { }
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe((data) => { // Success
+      this.users = data['results'];
+    },
+      (error) => { console.error(error); }
+    )
   }
-
- 
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
