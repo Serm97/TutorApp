@@ -31,7 +31,7 @@
           <p>{{user.location.city}}</p>
           <p>{{user.email}}</p>
         </ion-label>
-        <ion-button fill="outline" slot="end">Ver</ion-button>
+        <ion-button fill="outline" slot="end" (click)="openModal(user)">Ver</ion-button>
       </ion-item>
     </ion-virtual-scroll>
   </ion-list>
