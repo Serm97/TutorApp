@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController, ModalController } from '@ionic/angular';
+import { UserServiceService } from '../services/user-service.service';
+import { ModalPage } from '../modal/viewTutor/modal.page';
 
 @Component({
   selector: 'app-tab2',
@@ -8,76 +10,33 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class Tab2Page {
 
-  categorias: Array<any>;
+  users: any[] = [];
 
-  constructor(public actionSheetController: ActionSheetController) { 
-    this.categorias = [
-      {
-        titulo:'Educación',
-        color:"primary",
-        icono:"book"
-      },
-      {
-        titulo:'Cocina',
-        color:"secondary",
-        icono:"restaurant"
-      },
-      {
-        titulo:'Estado fisico',
-        color:"tertiary",
-        icono:"bicycle"
-      },
-      {
-        titulo:'Otros',
-        color:"success",
-        icono:"pricetag"
-      }      
-    ];
+  constructor(
+    public actionSheetController: ActionSheetController,
+    public alertController: AlertController,
+    public userService: UserServiceService,
+    private modalController: ModalController
+  ) { }
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe((data) => { // Success
+      this.users = data['results'];
+      console.log(this.users);
+    },
+      (error) => { console.error(error); }
+    )
   }
 
- 
-
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
-      buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Share',
-        icon: 'share',
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'Play (open modal)',
-        icon: 'arrow-dropright-circle',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'Favorite',
-        icon: 'heart',
-        handler: () => {
-          console.log('Favorite clicked');
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+  async openModal(user){
+    console.log(user);
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      componentProps:{
+        user : user
+      }
     });
-    await actionSheet.present();
+    modal.present();
   }
 
-  async hola() {
-    console.log('Hola Mundooo');
-  }
 }
