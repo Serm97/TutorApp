@@ -30,18 +30,24 @@
     <ion-input disabled>Sergio Ramirez Moreno</ion-input>
   </ion-item>
 
-  <ion-list>
-    
+  <ion-item>
+    <ion-button slot="start" expand="full"  fill="outline" color="primary" (click)="presentAlertMultipleButtons('tutor')" float-left>Tutors</ion-button>
+    <ion-button slot="end" expand="full"  fill="outline" color="primary" (click)="presentAlertMultipleButtons('subject')" float-right>Subject</ion-button>
+  </ion-item>
+
+ <ion-list>
   <ion-radio-group>
-     <ion-item>
-        <ion-label>In Person</ion-label>
-        <ion-radio slot="start" value="biff"></ion-radio>
+
+    <ion-item>
+      <ion-label><ion-icon name="eye"></ion-icon> In Person</ion-label>
+      <ion-radio value="person"></ion-radio>
     </ion-item>
 
     <ion-item>
-      <ion-label>Virtual</ion-label>
-      <ion-radio slot="start" value="biff"></ion-radio>
+      <ion-label><ion-icon name="desktop"></ion-icon> Virtual</ion-label>
+      <ion-radio value="virtual"></ion-radio>
     </ion-item>
+
   </ion-radio-group>
 </ion-list>
 
@@ -65,47 +71,15 @@
     
 </ion-item>
 
-
-
-
-
-
-
-
-
-
-  <ion-item>
-    <ion-label position="floating">Last Name</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
-  <ion-item>
-  <ion-label position="floating">Description</ion-label>
-  <ion-textarea></ion-textarea>
-</ion-item>
-
-   <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime display-format="MMM DD, YYYY HH:mm"></ion-datetime>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Number Contact</ion-label>
-    <ion-input type="number"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating"> <b>@</b>  Email</ion-label>
-    <ion-input type="search" color="primary" pattern="tel"></ion-input>
-  </ion-item>
-
-  <ion-item>
-      <ion-label position="floating">Description</ion-label>
+<ion-item>
+      <ion-label position="floating">Description of Difficult</ion-label>
       <ion-textarea></ion-textarea>
   </ion-item> 
 
-    
-  <ion-list>
+
+
+  
+  <!-- <ion-list>
       <ion-radio-group>
         <ion-list-header>
           <ion-label><b><ion-icon name="person"></ion-icon>  Profile</b></ion-label>
@@ -113,16 +87,16 @@
         <ion-button shape="round" fill="outline" (click)="ionViewDidLoad()">Registrados</ion-button>
         <ion-item>
           <ion-label (click)="presentAlertRadio()">¿Role in the application?</ion-label>
-          <!-- <ion-radio slot="start" value="biff" checked></ion-radio> -->
+         <ion-radio slot="start" value="biff" checked></ion-radio>
         </ion-item>
       </ion-radio-group>
-    </ion-list>
+    </ion-list> -->
 
-    
+<!--     
 <ion-item>
   <ion-badge color="tertiary " (click)="presentAlertMultipleButtons()">Accept Conditions ?</ion-badge>
-</ion-item>
-<ion-button expand="block" (click)="presentLoading()">Block Button</ion-button>
+</ion-item> -->
+<ion-button expand="block" (click)="presentLoading()"> Send <ion-icon name="checkmark-circle-outline"></ion-icon></ion-button>
 
 
 

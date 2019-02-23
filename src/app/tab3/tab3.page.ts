@@ -31,7 +31,6 @@ export class Tab3Page {
       }
     
     async presentLoading() {
-      console.log("Enviadndo el Formulario...");
       
       const loading = await this.loadingController.create({
         message: 'Validate form...',
@@ -42,7 +41,7 @@ export class Tab3Page {
   
       const { role, data } = await loading.onDidDismiss();
   
-      alert('Data Send!');
+      swal('Success!', 'This request has been sent.', 'success');
     }
   
     async presentLoadingWithOptions() {
@@ -107,11 +106,22 @@ export class Tab3Page {
       await alert.present();
     }
 
-    async presentAlertMultipleButtons() {
+    async presentAlertMultipleButtons(type) {
+       let list = ''; 
+       let title = '';
+
+       if(type == 'tutor'){
+        list = '<ion-list><ion-radio-group><ion-item><ion-label>Juan Mendoza</ion-label><ion-radio value="0"></ion-radio></ion-item><ion-item><ion-label>Francisco Reyes</ion-label><ion-radio value="#"></ion-radio></ion-item></ion-radio-group></ion-list>';
+        title = 'Tutors Compatible';
+       }else{
+         list = '<ion-list><ion-radio-group><ion-item><ion-label>Programming</ion-label><ion-radio value="0"></ion-radio></ion-item><ion-item><ion-label>Database</ion-label><ion-radio value="#"></ion-radio></ion-item><ion-item><ion-label>Design Apps</ion-label><ion-radio value="#"></ion-radio></ion-item></ion-radio-group></ion-list>';
+         title = 'Your Subjects';
+       }
+
       const alert = await this.alertController.create({
-        header: 'Is Sure?',
-        message: '<select>Select a tutor...<option>Jorge Pulido Caro<option> <option>Francisco Mendoza Prada<option></select>',
-        buttons: ['Cancel', 'Open Modal', 'Delete']
+        header: title,
+        message: list,
+        buttons: ['Choose']
       });
   
       await alert.present();
