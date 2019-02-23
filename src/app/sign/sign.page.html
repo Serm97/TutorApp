@@ -3,29 +3,39 @@
  
   <ion-card >
    <h1 text-center>TutorApp</h1>
-  <ion-card-header padding>
+  <!-- <ion-card-header> -->
 
-    <img src="https://www.oxfordlearning.com/wp-content/uploads/2015/10/icon-tutoring-english.png" style="width: 70%; margin:auto">
-    <ion-card-subtitle></ion-card-subtitle>
-    <ion-card-title text-center>Sign In</ion-card-title>
-  </ion-card-header>
+    <img src="https://lh3.googleusercontent.com/jcpRAtZHfNMtwBx0-Wg7xk7Cee5DHmNBQrE3k7-lf1wBxbzBP3962yH8WYSFo9iu7A" style="width: 70%; margin:auto">
+  <!-- </ion-card-header> -->
 
-  <ion-card-content>
-    <ion-item>
-      <ion-label position="floating">User</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <br>
-    <ion-button expand="full" color="tertiary">
-      <ion-icon name="log-in"></ion-icon>
-      <b>Go</b> 
-    </ion-button>
+  <!-- <ion-card-content> -->
+
+    <div padding>
+      <ion-item>
+        <ion-label position="floating"><b>User</b></ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"><b>Password</b></ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button expand="full" color="primary">
+        <ion-icon name="log-in"></ion-icon>
+        <b>Go</b> 
+      </ion-button>
+    </div>
+
+    <ion-fab vertical="center " horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="person-add"></ion-icon>
+      </ion-fab-button>
+       <ion-fab-list side="start">
+          <ion-button color="light"><ion-icon name="person-add"></ion-icon> Sign Up</ion-button>
+       </ion-fab-list>
+     </ion-fab>
         
-  </ion-card-content>
+  <!-- </ion-card-content> -->
 </ion-card>
 
 

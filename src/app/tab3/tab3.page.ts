@@ -110,7 +110,7 @@ export class Tab3Page {
     async presentAlertMultipleButtons() {
       const alert = await this.alertController.create({
         header: 'Is Sure?',
-        message: 'By accepting terms and conditions allows us to manage your data.',
+        message: '<select>Select a tutor...<option>Jorge Pulido Caro<option> <option>Francisco Mendoza Prada<option></select>',
         buttons: ['Cancel', 'Open Modal', 'Delete']
       });
   
