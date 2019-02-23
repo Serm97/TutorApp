@@ -31,24 +31,21 @@
   </ion-item>
 
   <ion-item>
-    <ion-button slot="start" expand="full"  fill="outline" color="primary" (click)="presentAlertMultipleButtons('tutor')" float-left>Tutors</ion-button>
-    <ion-button slot="end" expand="full"  fill="outline" color="primary" (click)="presentAlertMultipleButtons('subject')" float-right>Subject</ion-button>
+    <ion-button slot="start" expand="full"  fill="clear" color="success" (click)="presentAlertMultipleButtons('tutor')" float-left>Tutors</ion-button>
+    <ion-button slot="end" expand="full"  fill="clear" color="success" (click)="presentAlertMultipleButtons('subject')" float-right>Subject</ion-button>
   </ion-item>
 
  <ion-list>
-  <ion-radio-group>
 
-    <ion-item>
-      <ion-label><ion-icon name="eye"></ion-icon> In Person</ion-label>
-      <ion-radio value="person"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label><ion-icon name="desktop"></ion-icon> Virtual</ion-label>
-      <ion-radio value="virtual"></ion-radio>
-    </ion-item>
-
-  </ion-radio-group>
+ <ion-item>
+    <ion-label><b>Type Tutorial</b></ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="person"><ion-icon name="eye"></ion-icon> In Person</ion-select-option>
+      <ion-select-option value="virtual"><ion-icon name="desktop"></ion-icon> Virtual</ion-select-option>
+      <ion-select-option value="call"><ion-icon name="call"></ion-icon> Call</ion-select-option>
+    </ion-select>
+</ion-item>
+  
 </ion-list>
 
 <ion-item>
