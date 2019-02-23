@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'sign',
+        children: [
+          {
+            path: '',
+            loadChildren: '../sign/sign.module#SignPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
