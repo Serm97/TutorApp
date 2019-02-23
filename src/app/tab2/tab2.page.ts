@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, AlertController, ModalController } from '@ionic/angular';
 import { UserServiceService } from '../services/user-service.service';
-import { ModalPage } from '../modal/modal.page';
+import { ModalPage } from '../modal/viewTutor/modal.page';
 
 @Component({
   selector: 'app-tab2',

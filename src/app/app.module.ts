@@ -11,8 +11,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { UserServiceService } from './services/user-service.service';
-import { ModalPageModule } from './modal/modal.module';
-
+import { ModalPageModule } from './modal/viewTutor/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
