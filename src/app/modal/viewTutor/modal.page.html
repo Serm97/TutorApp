@@ -23,6 +23,9 @@
       <p>Area: Matematicas</p>
       <p>Disponiblidad: Alta</p>
       <ion-list>
+        <ion-list-header>
+          <ion-label>Calificaciones</ion-label>
+        </ion-list-header>
         <ion-item>
           <ion-label>Conocimiento</ion-label>
           <ion-badge slot="end" color="success">10</ion-badge>
@@ -40,7 +43,10 @@
           <ion-badge slot="end" color="danger">3</ion-badge>
         </ion-item>
       </ion-list>
-      </ion-card-content>
+      <ion-button expand="full" full="clear" color="success" (click)="closeModal()">
+        Solicitar
+      </ion-button>
+    </ion-card-content>
   </ion-card>
 
 </ion-content>

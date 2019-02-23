@@ -16,17 +16,17 @@
 
 <ion-content>
   <ion-card class="welcome-card">
-    <ion-img src="/assets/shapes.svg"></ion-img>
+    <ion-img src="https://www.bing.com/th?id=OIP.5dJBKk4HWZs6Xl7S5t3tdwHaFh&pid=Api"></ion-img>
     <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to TutorApp</ion-card-title>
+      <!-- <ion-card-subtitle>Get Started</ion-card-subtitle> -->
+      <ion-card-title>Bienvenido a TutorApp</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Now that your app has been created, you'll want to start building out features and components. Check out some
-        of the resources below for next steps.</p>
+      <p> Una comunidad creada para aquellas personas que les gusta ayudar o necesitan ayuda en una actividad.
+      </p>
     </ion-card-content>
   </ion-card>
-  <ion-list lines="none">
+  <!-- <ion-list lines="none">
     <ion-list-header>
       <ion-label>Resources</ion-label>
     </ion-list-header>
@@ -46,5 +46,27 @@
       <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
       <ion-label>Theme Your App</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h4>Login</h4>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input type="text" placeholder="Username"></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-input type="password" placeholder="Password"></ion-input>
+            </ion-item>
+          </div>
+  
+          <div padding>
+            <ion-button size="large" href="/touchid" expand="block">Iniciar</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>
