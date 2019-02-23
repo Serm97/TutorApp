@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import​ { HttpClientModule } ​from​ '@angular/common/http';
+import​ { RegisterService } from '../app/services/register.service';    
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,6 +18,7 @@ import { ModalPageModule } from './modal/viewTutor/modal.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
+
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -27,6 +30,7 @@ import { ModalPageModule } from './modal/viewTutor/modal.module';
     StatusBar,
     SplashScreen,
     UserServiceService,
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
