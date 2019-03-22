@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="Tutorials" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="Notifications" />
+        <item
+            android:id="@+id/nav_manage"
+            android:title="Categories" />
+
+        <item
+            android:id="@+id/nav_history"
+            android:title="History" />
+    </group>
+
+    <item android:title="Additional">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="Info" />
+            <item
+                android:id="@+id/nav_send"
+                android:title="Log out" />
+        </menu>
+    </item>
+
+</menu>
