@@ -26,9 +26,8 @@
             <SeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:progress="@android:integer/config_longAnimTime" />
+                android:layout_height="20dp"
+                android:layout_margin="15dp" />
 
             <ListView
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
