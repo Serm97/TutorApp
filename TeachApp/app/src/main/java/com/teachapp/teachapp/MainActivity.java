@@ -16,7 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ProfileFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        ProfileFragment.OnFragmentInteractionListener,
+        TutorialsFragment.OnFragmentInteractionListener,
+        NotificationsFragment.OnFragmentInteractionListener,
+        CategoriesFragment.OnFragmentInteractionListener,
+        HistoryFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,14 +93,18 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             miFragment = new ProfileFragment();
             fragmentSeleccionado = true;
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_tutorials) {
+            miFragment = new TutorialsFragment();
+            fragmentSeleccionado = true;
+        } else if (id == R.id.nav_notifications) {
+            miFragment = new NotificationsFragment();
+            fragmentSeleccionado = true;
+        } else if (id == R.id.nav_categories) {
+            miFragment = new CategoriesFragment();
+            fragmentSeleccionado = true;
+        } else if (id == R.id.nav_history) {
+            miFragment = new HistoryFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_send) {
 
         }
