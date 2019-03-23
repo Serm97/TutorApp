@@ -19,11 +19,11 @@
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:padding="@dimen/activity_horizontal_margin"
             android:text="@string/category"
-            android:drawableStart="@android:drawable/ic_menu_set_as"
-            android:drawableTint="@android:color/black"
+            android:drawableEnd="@android:drawable/ic_dialog_dialer"
+            android:drawableTint="@android:color/holo_blue_bright"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:drawableLeft="@android:drawable/ic_menu_set_as" />
+            android:drawableRight="@android:drawable/ic_dialog_dialer" />
 
 
         <RelativeLayout

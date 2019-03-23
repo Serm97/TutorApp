@@ -5,10 +5,43 @@
     android:layout_height="match_parent"
     tools:context=".HistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:drawableStart="@android:drawable/ic_menu_set_as"
+                android:drawableLeft="@android:drawable/ic_menu_set_as"
+                android:drawableTint="@android:color/holo_blue_bright"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/historial"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large"
+                tools:ignore="UnusedAttribute" />
+
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:progress="@android:integer/config_longAnimTime" />
+
+            <ListView
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:background="@android:color/tertiary_text_dark"
+                android:divider="@android:drawable/dialog_holo_light_frame"
+                android:padding="10dp"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbars="horizontal" />
+
+        </LinearLayout>
+
 
 </FrameLayout>

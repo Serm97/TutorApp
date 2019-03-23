@@ -34,5 +34,6 @@
     <string name="ciuProfile">Ciudad: Bogotá D.C</string>
     <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
     <string name="btnCalificar">Calificar</string>
+    <string name="historial">Historial</string>
 
 </resources>
