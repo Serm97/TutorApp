@@ -153,9 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intent);
-        finish();
+
         if (mAuthTask != null) {
             return;
         }
@@ -197,6 +195,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
@@ -350,6 +349,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("nombreUsuario",mEmail);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
