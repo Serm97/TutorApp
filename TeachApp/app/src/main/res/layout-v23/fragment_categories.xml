@@ -18,12 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/category"
-            android:drawableStart="@android:drawable/ic_menu_set_as"
+            android:text="Categorías"
+            android:drawableRight="@android:drawable/ic_menu_set_as"
             android:drawableTint="@android:color/black"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:drawableLeft="@android:drawable/ic_menu_set_as" />
+            android:textStyle="bold" />
 
 
         <RelativeLayout
