@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity
             user.setText(name.toUpperCase());
             email.setText(name.toLowerCase());
         }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content_main,new CategoriesFragment())
+                .commit();
     }
 
     @Override
