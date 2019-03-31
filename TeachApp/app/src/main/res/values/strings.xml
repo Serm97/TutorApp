@@ -25,15 +25,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="level">5</string>
-    <string name="category">Categorías</string>
+    <string name="category">Categories</string>
     <string name="skills">• Java \n• POO \n• Álgebra \n• Agoritmos</string>
     <string name="nomProfile">Juan E. Peréz</string>
-    <string name="solProfile">Solicitar</string>
-    <string name="numProfile">Tutorias: 12</string>
-    <string name="uniProfile">Universidad: Konrad Lorenz</string>
-    <string name="ciuProfile">Ciudad: Bogotá D.C</string>
+    <string name="solProfile">Request</string>
+    <string name="numProfile">Tutorials: 12</string>
+    <string name="uniProfile">University: Konrad Lorenz</string>
+    <string name="ciuProfile">City: Bogotá D.C</string>
     <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
-    <string name="btnCalificar">Calificar</string>
-    <string name="historial">Historial</string>
+    <string name="btnCalificar">Qualify</string>
+    <string name="historial">History</string>
 
 </resources>
