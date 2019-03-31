@@ -38,18 +38,124 @@
                 android:text="Request Tutorial"
                 android:textSize="30sp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
 
-               <AutoCompleteTextView
-                    android:id="@+id/email"
+            <com.example.comboboxtest.ComboBox
+                style="?android:attr/spinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/subject"
+                    style="?android:attr/spinnerItemStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/pro"
-                    android:inputType="textEmailAddress"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Select a Subject..."
+                    android:textAlignment="inherit"
+                    />
+
+                <TextView
+                    android:id="@+id/request_subject"
+                    style="?android:attr/spinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Subject 1"
+                    android:textAlignment="inherit"
+                    />
+
+            </com.example.comboboxtest.ComboBox>
+
+               <AutoCompleteTextView
+                    android:id="@+id/request_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Specific topic"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
 
+            <com.example.comboboxtest.ComboBox
+                style="?android:attr/spinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/offering"
+                    style="?android:attr/spinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Indicate your offering..."
+                    android:textAlignment="inherit"
+                    />
+
+                <TextView
+                    android:id="@+id/request_offering"
+                    style="?android:attr/spinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text=">Offering 1"
+                    android:textAlignment="inherit"
+                    />
+
+            </com.example.comboboxtest.ComboBox>
+
             </android.support.design.widget.TextInputLayout>
+
+            <EditText
+                android:id="@+id/request_dateStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="@string/format_date"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="32dp"
+                />
+
+            <EditText
+                android:id="@+id/request_dateEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="@string/format_date"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="32dp"
+                />
+
+            <EditText
+                android:id="@+id/request_timeInit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="@string/format_hour"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <EditText
+                android:id="@+id/request_timeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="@string/format_hour"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
