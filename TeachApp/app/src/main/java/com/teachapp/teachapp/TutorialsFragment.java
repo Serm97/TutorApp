@@ -71,7 +71,7 @@ public class TutorialsFragment extends Fragment implements View.OnClickListener 
 
         View inflatedView = inflater.inflate(R.layout.fragment_tutorials, container, false);
         // Inflate the layout for this fragment
-        Button btnViewUser = (Button) inflatedView.findViewById(R.id.btn_view_notifications);
+        Button btnViewUser = (Button) inflatedView.findViewById(R.id.btn_view_user);
         btnViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
