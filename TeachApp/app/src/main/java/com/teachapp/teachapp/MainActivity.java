@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -47,6 +49,27 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView user = (TextView) headerView.findViewById(R.id.txt_name_user);
+        TextView email = (TextView) headerView.findViewById(R.id.txt_email_user);
+
+        Bundle mybundle = this.getIntent().getExtras();
+
+        if(mybundle!=null)
+        {
+            String name = mybundle.getString("nombreUsuario");
+            Toast.makeText(MainActivity.this, name,
+                    Toast.LENGTH_LONG).show();
+
+            user.setText(name.toUpperCase());
+            email.setText(name.toLowerCase());
+        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content_main,new CategoriesFragment())
+                .commit();
     }
 
     @Override
@@ -105,8 +128,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_history) {
             miFragment = new HistoryFragment();
             fragmentSeleccionado = true;
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_info) {
 
+        } else if (id == R.id.nav_exit) {
+            finish();
         }
         if(fragmentSeleccionado){
             getSupportFragmentManager()

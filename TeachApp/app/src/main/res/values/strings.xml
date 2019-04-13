@@ -2,7 +2,7 @@
     <string name="app_name">TeachApp</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -24,5 +24,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="level">5</string>
+    <string name="category">Categories</string>
+    <string name="skills">• Java \n• POO \n• Álgebra \n• Agoritmos</string>
+    <string name="nomProfile">Juan E. Peréz</string>
+    <string name="solProfile">Request</string>
+    <string name="numProfile">Tutorials: 12</string>
+    <string name="uniProfile">University: Konrad Lorenz</string>
+    <string name="ciuProfile">City: Bogotá D.C</string>
+    <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
+    <string name="btnCalificar">Qualify</string>
+    <string name="historial">History</string>
 
 </resources>
