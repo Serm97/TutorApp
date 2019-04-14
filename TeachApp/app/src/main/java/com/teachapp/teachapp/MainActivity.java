@@ -14,11 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-<<<<<<< HEAD
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ProfileFragment.OnFragmentInteractionListener {
-=======
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity
         NotificationsFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         HistoryFragment.OnFragmentInteractionListener {
->>>>>>> Jorge
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +53,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-<<<<<<< HEAD
-=======
 
         View headerView = navigationView.getHeaderView(0);
         TextView user = (TextView) headerView.findViewById(R.id.txt_name_user);
@@ -78,7 +74,6 @@ public class MainActivity extends AppCompatActivity
                 .beginTransaction()
                 .add(R.id.content_main,new CategoriesFragment())
                 .commit();
->>>>>>> Jorge
     }
 
     @Override
@@ -125,18 +120,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             miFragment = new ProfileFragment();
             fragmentSeleccionado = true;
-<<<<<<< HEAD
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-=======
         } else if (id == R.id.nav_tutorials) {
             miFragment = new TutorialsFragment();
             fragmentSeleccionado = true;
@@ -153,7 +136,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_exit) {
             finish();
->>>>>>> Jorge
+
         }
         if(fragmentSeleccionado){
             getSupportFragmentManager()
