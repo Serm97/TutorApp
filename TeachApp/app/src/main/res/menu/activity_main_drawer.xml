@@ -8,13 +8,13 @@
             android:id="@+id/nav_profile"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_tutorials"
             android:title="Tutorials" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_notifications"
             android:title="Notifications" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_categories"
             android:title="Categories" />
 
         <item
@@ -25,10 +25,10 @@
     <item android:title="Additional">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_info"
                 android:title="Info" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_exit"
                 android:title="Log out" />
         </menu>
     </item>
