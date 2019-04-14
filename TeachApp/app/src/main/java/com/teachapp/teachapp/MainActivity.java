@@ -1,5 +1,6 @@
 package com.teachapp.teachapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity
         TutorialsFragment.OnFragmentInteractionListener,
         NotificationsFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
-        HistoryFragment.OnFragmentInteractionListener {
+        HistoryFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +115,8 @@ public class MainActivity extends AppCompatActivity
         boolean fragmentSeleccionado = false;
 
         if (id == R.id.nav_profile) {
-            miFragment = new ProfileFragment();
-            fragmentSeleccionado = true;
+            Intent intent = new Intent(this,SeekerActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_tutorials) {
             miFragment = new TutorialsFragment();
             fragmentSeleccionado = true;
