@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_nombre"
+                    android:id="@+id/autName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_apellido"
+                    android:id="@+id/autLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Apellido"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_email"
+                    android:id="@+id/autEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_date"
+                    android:id="@+id/autBirthDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Fecha Nacimiento"
@@ -87,17 +87,29 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <Spinner
+                android:id="@+id/spinnerU"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Universidad"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/txtPasswordR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Universidad"
-                    android:inputType="text" />
+                    android:hint="@string/prompt_password"
+                    android:inputType="textPassword" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -106,12 +118,14 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/txtAreas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/prompt_password"
-                    android:inputType="textPassword" />
+                    android:hint="Conocimientos"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:onClick="openDialog" />
 
             </android.support.design.widget.TextInputLayout>
 
