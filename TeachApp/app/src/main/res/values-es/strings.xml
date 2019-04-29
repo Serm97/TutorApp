@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TeachApp</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Ingresar</string>
+    <string name="action_sign_in_short">Registrarse</string>
+    <string name="error_invalid_email">Este correo es invalido</string>
+    <string name="error_invalid_password">La contraseña es demsiado corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">"Se necesitan permisos de contactos para proporcionar correo electronico. Terminaciones.
+        completions."
+    </string>
+    <string name="title_activity_main">TeachApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="user_register">Registrarse</string>
+    <string name="register">Registro</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Prueba</string>
+    <string name="level">5</string>
+    <string name="category">Categorías</string>
+    <string name="skills">• Java \n• POO \n• Álgebra \n• Agoritmos</string>
+    <string name="nomProfile">Juan E. Peréz</string>
+    <string name="solProfile">Solicitar</string>
+    <string name="numProfile">Tutorias: 12</string>
+    <string name="uniProfile">Universidad: Konrad Lorenz</string>
+    <string name="ciuProfile">Ciudad: Bogotá D.C</string>
+    <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
+    <string name="btnCalificar">Calificar</string>
+    <string name="historial">Historial</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.teachapp.teachapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,13 +18,19 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ProfileFragment.OnFragmentInteractionListener,
         TutorialsFragment.OnFragmentInteractionListener,
         NotificationsFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
-        HistoryFragment.OnFragmentInteractionListener {
+        HistoryFragment.OnFragmentInteractionListener,
+        SeekerFragment.OnFragmentInteractionListener{
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,19 @@ public class MainActivity extends AppCompatActivity
             user.setText(name.toUpperCase());
             email.setText(name.toLowerCase());
         }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content_main,new CategoriesFragment())
+                .commit();
+
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     @Override
@@ -107,8 +127,10 @@ public class MainActivity extends AppCompatActivity
 
         Fragment miFragment = null;
         boolean fragmentSeleccionado = false;
-
-        if (id == R.id.nav_profile) {
+        if (id == R.id.nav_seeker) {
+            miFragment = new SeekerFragment();
+            fragmentSeleccionado = true;
+        } else if (id == R.id.nav_profile) {
             miFragment = new ProfileFragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_tutorials) {
@@ -126,6 +148,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_info) {
 
         } else if (id == R.id.nav_exit) {
+            mAuth.signOut();
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
             finish();
         }
         if(fragmentSeleccionado){
