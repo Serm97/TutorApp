@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "781911524092",
+    "firebase_url": "https://teachapp-aa5be.firebaseio.com",
+    "project_id": "teachapp-aa5be",
+    "storage_bucket": "teachapp-aa5be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781911524092:android:3ada994a1f331752",
+        "android_client_info": {
+          "package_name": "com.teachapp.teachapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781911524092-2s14fgqp1posbhskgjdl1u5asc3r319m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teachapp.teachapp",
+            "certificate_hash": "34a9940f45d4646b04fa0da620cada0e213231c8"
+          }
+        },
+        {
+          "client_id": "781911524092-vqcdc5vpmr5giiu64p31cs6fgj5np9e4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt7zIQZcKLKMwlRbfbey6O1hXkRs9RlcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781911524092-vqcdc5vpmr5giiu64p31cs6fgj5np9e4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
