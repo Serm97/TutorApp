@@ -20,7 +20,7 @@
 
             <ImageView
                 android:id="@+id/icon_category"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/category_cover_height"
                 android:layout_height="@dimen/category_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"

@@ -7,24 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".CategoriesFragment">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical">
-
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/category"
-            android:drawableEnd="@android:drawable/ic_dialog_dialer"
-            android:drawableTint="@android:color/holo_blue_bright"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:drawableRight="@android:drawable/ic_dialog_dialer" />
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,14 +45,55 @@
 
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_categories"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbars="vertical"/>
 
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@string/category"
+                        android:drawableEnd="@android:drawable/ic_dialog_dialer"
+                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:drawableRight="@android:drawable/ic_dialog_dialer" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false" />
+
+                </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Tutores"
+                        android:drawableEnd="@drawable/ic_action_user"
+                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:drawableRight="@drawable/ic_action_user" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_users"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false" />
+
+                </LinearLayout>
 
     </LinearLayout>
-
+    </ScrollView>
 </FrameLayout>

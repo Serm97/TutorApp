@@ -45,8 +45,9 @@ public class CategoriesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     View vista;
-    RecyclerView recyclerCategories;
+    RecyclerView recyclerCategories,recyclerUsers;
     final List<Category> categoryList = new ArrayList<>();
+    final List<User> userList = new ArrayList<>();
 
 
     public CategoriesFragment() {
@@ -85,20 +86,48 @@ public class CategoriesFragment extends Fragment {
                              Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_categories, container, false);
         recyclerCategories = (RecyclerView) vista.findViewById(R.id.recycler_categories);
-        final ArrayList<Category> cat = new ArrayList<>();
+        recyclerUsers = (RecyclerView) vista.findViewById(R.id.recycler_users);
+
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        final String email = mybundle.getString("nombreUsuario");
+
+//        final ArrayList<Category> cat = new ArrayList<>();
         FireDatabase.getInstance().child("Utilities").child("Categories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Category category = snapshot.getValue(Category.class);
                     categoryList.add(category);
-                    cat.add(category);
+                    //cat.add(category);
                 }
-                recyclerCategories.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                //recyclerCategories.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                recyclerCategories.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 recyclerCategories.setItemAnimator(new DefaultItemAnimator());
-                CategoryAdapter adapter = new CategoryAdapter(getContext(),cat);
+                CategoryAdapter adapter = new CategoryAdapter(getContext(),categoryList);
 
                 recyclerCategories.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Lista de ususarios
+        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User u = snapshot.getValue(User.class);
+                    if (!u.getEmail().equals(email)){
+                        userList.add(u);
+                    }
+                }
+                recyclerUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                recyclerUsers.setItemAnimator(new DefaultItemAnimator());
+                UserAdapter adapter = new UserAdapter(getContext(),userList);
+                recyclerUsers.setAdapter(adapter);
             }
 
             @Override

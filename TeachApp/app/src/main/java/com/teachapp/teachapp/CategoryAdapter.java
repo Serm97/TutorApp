@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     private Context mContext;
     private List<Category> categoryList;
+
 
     public CategoryAdapter(Context mContext,List<Category> categoryList) {
         this.mContext = mContext;
@@ -62,12 +64,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
-        myViewHolder.titleCategory.setText(categoryList.get(position).getName());
-        int nareas = categoryList.get(position).getAreas() != null
-                ? categoryList.get(position).getAreas().size():0;
-        myViewHolder.contAreas.setText(String.valueOf(nareas));
-        myViewHolder.iconView.setImageResource(this.categoryList.get(position).getIcon());
-
+        final Category cat = categoryList.get(position);
+        myViewHolder.titleCategory.setText(cat.getName());
+        int nareas = cat.getAreas() != null
+                ? cat.getAreas().size():0;
+        myViewHolder.contAreas.setText(String.valueOf(nareas+" areas"));
+        myViewHolder.iconView.setImageResource(cat.getIcon());
+        myViewHolder.iconView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext,"Click seleccionando: "+cat.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        myViewHolder.elementView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext,"Click seleccionando: "+cat.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -80,12 +94,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         TextView titleCategory;
         TextView contAreas;
         ImageView iconView;
+        View elementView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             titleCategory = (TextView) itemView.findViewById(R.id.title_category);
             contAreas = (TextView) itemView.findViewById(R.id.count_areas);
             iconView = (ImageView) itemView.findViewById(R.id.icon_category);
+            elementView = itemView;
         }
     }
 }
