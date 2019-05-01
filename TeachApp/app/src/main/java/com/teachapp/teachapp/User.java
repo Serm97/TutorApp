@@ -1,27 +1,49 @@
 package com.teachapp.teachapp;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
 
-    String email;
-    String name;
-    String lastName;
-    String city;
-    String university;
-    List<Area> areas;
+    private String email;
+    private String name;
+    private String lastName;
+    private String phone;
+    private String city;
+    private String university;
+    private List<Area> areas;
+    private int ntutorials;
+    private int ntutorialsReceived;
+    private double score;
 
     public User() {
     }
 
-    public User(String email, String name, String lastName, String city, String university, List<Area> areas) {
+    public User(String email, String name, String lastName,String phone, String city, String university, List<Area> areas) {
         this.email = email;
         this.name = name;
         this.lastName = lastName;
+        this.phone = phone;
         this.city = city;
         this.university = university;
         this.areas = areas;
+        this.ntutorials = 0;
+        this.ntutorialsReceived = 0;
+        this.score = 0;
+    }
+
+    public User(String email, String name, String lastName, String phone, String city, String university, List<Area> areas, int ntutorials, int ntutorialsReceived, double score) {
+        this.email = email;
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.city = city;
+        this.university = university;
+        this.areas = areas;
+        this.ntutorials = ntutorials;
+        this.ntutorialsReceived = ntutorialsReceived;
+        this.score = score;
     }
 
     public String getEmail() {
@@ -48,6 +70,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getCity() {
         return city;
     }
@@ -71,38 +101,44 @@ public class User {
     public void setAreas(List<Area> areas) {
         this.areas = areas;
     }
+
+    public int getNtutorials() {
+        return ntutorials;
+    }
+
+    public void setNtutorials(int ntutorials) {
+        this.ntutorials = ntutorials;
+    }
+
+    public int getNtutorialsReceived() {
+        return ntutorialsReceived;
+    }
+
+    public void setNtutorialsReceived(int ntutorialsReceived) {
+        this.ntutorialsReceived = ntutorialsReceived;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 }
 
-class Categorie{
-    String name;
+class Category{
+    private String name;
+    private List<Area> areas;
+    private int icon;
 
-    public Categorie() {
+    public Category() {
     }
 
-    public Categorie(String namecategories) {
-        this.name = namecategories;
-    }
-
-    public String getNamecategories() {
-        return name;
-    }
-
-    public void setNamecategories(String namecategories) {
-        this.name = namecategories;
-    }
-}
-
-class Area{
-
-    String name;
-    Categorie categorie;
-
-    public Area() {
-    }
-
-    public Area(String name, Categorie categorie) {
+    public Category(String name, List<Area> areas, int icon) {
         this.name = name;
-        this.categorie = categorie;
+        this.areas = areas;
+        this.icon = icon;
     }
 
     public String getName() {
@@ -113,19 +149,48 @@ class Area{
         this.name = name;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
+    public List<Area> getAreas() {
+        return areas;
     }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setAreas(List<Area> areas) {
+        this.areas = areas;
     }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+}
+
+class Area{
+
+    private String name;
+
+    public Area() {
+    }
+
+    public Area(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
 
 class Notification{
 
-    Date notificationDate;
-    String message;
+    private Date notificationDate;
+    private String message;
 
     public Notification(Date notificationDate, String message) {
         this.notificationDate = notificationDate;
@@ -149,52 +214,14 @@ class Notification{
     }
 }
 
-class Tutor extends User{
-
-    int ntutorials;
-    double score;
-    List<Area> lstAreas;
-
-    public Tutor(String email, String name, String lastName, String city, String university, List<Area> areas, int ntutorials, double score, List<Area> lstAreas) {
-        super(email, name, lastName, city, university, areas);
-        this.ntutorials = ntutorials;
-        this.score = score;
-        this.lstAreas = lstAreas;
-    }
-
-    public int getNtutorials() {
-        return ntutorials;
-    }
-
-    public void setNtutorials(int ntutorials) {
-        this.ntutorials = ntutorials;
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
-    }
-
-    public List<Area> getLstAreas() {
-        return lstAreas;
-    }
-
-    public void setLstAreas(List<Area> lstAreas) {
-        this.lstAreas = lstAreas;
-    }
-}
-
 class Tutorial{
 
-    User applicant;
-    User tutor;
-    Area area;
-    Area requestedArea;
-    Date date;
-    double score;
+    private User applicant;
+    private User tutor;
+    private Area area;
+    private Area requestedArea;
+    private Date date;
+    private double score;
 
     public Tutorial(User applicant, User tutor, Area area, Area requestedArea, Date date, double score) {
         this.applicant = applicant;
@@ -254,9 +281,67 @@ class Tutorial{
     }
 }
 
+class Request{
+    private User applicant;
+    private Area areaO;
+    private Area areaS;
+    private Date dateLimit;
+    private int state;
+
+    public Request() {
+    }
+
+    public Request(User applicant, Area areaO, Area areaS, Date dateLimit) {
+        this.applicant = applicant;
+        this.areaO = areaO;
+        this.areaS = areaS;
+        this.dateLimit = dateLimit;
+        this.state = 0;
+    }
+
+    public User getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(User applicant) {
+        this.applicant = applicant;
+    }
+
+    public Area getAreaO() {
+        return areaO;
+    }
+
+    public void setAreaO(Area areaO) {
+        this.areaO = areaO;
+    }
+
+    public Area getAreaS() {
+        return areaS;
+    }
+
+    public void setAreaS(Area areaS) {
+        this.areaS = areaS;
+    }
+
+    public Date getDateLimit() {
+        return dateLimit;
+    }
+
+    public void setDateLimit(Date dateLimit) {
+        this.dateLimit = dateLimit;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+}
 class Utilities{
 
-    String name;
+    private String name;
 
     public Utilities() {
 
