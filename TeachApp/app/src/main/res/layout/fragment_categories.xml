@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".CategoriesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <EditText
+                android:id="@+id/textCategoria"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Buscar..."
+                android:inputType="text"
+                android:padding="@dimen/activity_horizontal_margin" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_toEndOf="@+id/textCategoria"
+                android:layout_toRightOf="@+id/textCategoria"
+                android:background="#FFFFFFE6"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:drawableTint="@color/design_default_color_primary"
+                android:gravity="center"
+                android:padding="@dimen/activity_vertical_margin"
+                android:textAlignment="center" />
+
+        </RelativeLayout>
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@string/category"
+                        android:drawableEnd="@android:drawable/ic_dialog_dialer"
+                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:drawableRight="@android:drawable/ic_dialog_dialer" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false" />
+
+                </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Tutores"
+                        android:drawableEnd="@drawable/ic_action_user"
+                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:drawableRight="@drawable/ic_action_user" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_users"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false" />
+
+                </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
 </FrameLayout>
