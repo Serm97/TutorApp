@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,6 +94,7 @@ public class SeekerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_seeker, container, false);
+        ((BaseActivity)getActivity()).hideKeyboard(vista);
         editFecha = (EditText) vista.findViewById(R.id.editDateLimit);
         spinnerAO = (Spinner) vista.findViewById(R.id.spinnerAreaO);
         spinnerAS = (Spinner) vista.findViewById(R.id.spinnerAreaS);
@@ -139,7 +141,18 @@ public class SeekerFragment extends Fragment {
                 );
 
                 FireDatabase.getInstance().child("Request").push().setValue(request);
-                Toast.makeText(getActivity(),"Petición realzada",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Petición realizada",Toast.LENGTH_LONG).show();
+
+                Fragment fragment = new MatchFragment();
+                Bundle args = new Bundle();
+                args.putSerializable("requestMatch",request);
+                fragment.setArguments(args);
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_main,fragment)
+                        .commit();
             }
         });
     }

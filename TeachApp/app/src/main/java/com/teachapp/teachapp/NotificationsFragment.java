@@ -3,13 +3,23 @@ package com.teachapp.teachapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -20,7 +30,7 @@ import android.widget.Toast;
  * Use the {@link NotificationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NotificationsFragment extends Fragment implements View.OnClickListener{
+public class NotificationsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +39,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerNotfications;
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,17 +81,41 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =inflater.inflate(R.layout.fragment_notifications, container, false);
-        Button btnViewUser = (Button) v.findViewById(R.id.btn_view_notifications);
-        btnViewUser.setOnClickListener(new OnClickListener() {
+        View vista =inflater.inflate(R.layout.fragment_notifications, container, false);
+        recyclerNotfications = (RecyclerView) vista.findViewById(R.id.recycler_notifications);
+
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        final String email = mybundle.getString("nombreUsuario");
+
+        final ArrayList<Notification> lstNotifications = new ArrayList<>();
+        FireDatabase.getInstance().child("Notifications").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                String name ="No disponible";
-                Toast.makeText(getActivity(), name,
-                        Toast.LENGTH_LONG).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Notification not = snapshot.getValue(Notification.class);
+                    if (not.getToUser().getEmail().equals(email)){
+                        lstNotifications.add(not);
+                    }
+                }
+
+                if(lstNotifications.size()>0){
+                    recyclerNotfications.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerNotfications.setItemAnimator(new DefaultItemAnimator());
+                    NotificationsAdapter adapter = new NotificationsAdapter(getContext(),lstNotifications);
+                    recyclerNotfications.setAdapter(adapter);
+
+                }else{
+                    Toast.makeText(getActivity(),"No tienes Notificaciones",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-        return v;
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,10 +142,6 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
 
     /**
