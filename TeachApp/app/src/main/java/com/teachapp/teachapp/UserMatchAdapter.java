@@ -73,8 +73,8 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
                 Notification not = new Notification(
                         user,
                         new Date(),
-                        request.getApplicant().getName()+" solicita una tutoria de "+request.getAreaS().getName(),
-                        request);
+                        mainRequest.getApplicant().getName()+" solicita una tutoria de "+mainRequest.getAreaS().getName(),
+                        mainRequest);
                 FireDatabase.getInstance().child("Notifications").push().setValue(not);
                 Toast.makeText(mContext,"Petición realizada",Toast.LENGTH_LONG).show();
             }

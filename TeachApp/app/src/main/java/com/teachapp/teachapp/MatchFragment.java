@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -88,12 +89,49 @@ public class MatchFragment extends Fragment {
         if (getArguments() != null){
             if (getArguments().getSerializable("requestMatch") != null){
                 request = (Request)getArguments().getSerializable("requestMatch");
+                areaSearched.setText("Se Busca: "+request.getAreaS().getName());
                 findMatchRequest(request);
+            }else if(getArguments().getSerializable("searchMatch") != null){
+                String search = getArguments().getString("searchMatch");
+                areaSearched.setText("Se busca coincidencia con: "+search);
+                searchUser(search);
             }
         }
 
-        areaSearched.setText("Se Busca: "+request.getAreaS().getName());
+
         return vista;
+    }
+
+    private void searchUser(final String search) {
+        final List<User> userList = new ArrayList<>();
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        final String email = mybundle.getString("nombreUsuario");
+
+        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User u = snapshot.getValue(User.class);
+                    if (!u.getEmail().equals(email)){
+                        if (u.getName().toLowerCase().contains(search.toLowerCase()) ||
+                                u.getLastName().toLowerCase().contains(search.toLowerCase())){
+                            userList.add(u);
+                        }
+
+                    }
+                }
+                numerResult.setText("Resultados: "+userList.size());
+                recyclerUserMatch.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                recyclerUserMatch.setItemAnimator(new DefaultItemAnimator());
+                UserAdapter adapter = new UserAdapter(getContext(),userList);
+                recyclerUserMatch.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void findMatchRequest(final Request request) {

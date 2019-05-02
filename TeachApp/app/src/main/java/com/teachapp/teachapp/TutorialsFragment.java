@@ -3,12 +3,22 @@ package com.teachapp.teachapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +38,7 @@ public class TutorialsFragment extends Fragment implements View.OnClickListener 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerTutorial;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,20 +80,42 @@ public class TutorialsFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View inflatedView = inflater.inflate(R.layout.fragment_tutorials, container, false);
-        // Inflate the layout for this fragment
-        Button btnViewUser = (Button) inflatedView.findViewById(R.id.btn_view_user);
-        btnViewUser.setOnClickListener(new View.OnClickListener() {
+        View vista = inflater.inflate(R.layout.fragment_tutorials, container, false);
+        recyclerTutorial = (RecyclerView) vista.findViewById(R.id.recycler_tutorials);
+
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        final String email = mybundle.getString("nombreUsuario");
+
+        final ArrayList<Tutorial> lstTutorials = new ArrayList<>();
+        FireDatabase.getInstance().child("Tutorials").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_main,new ProfileFragment())
-                        .commit();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Tutorial tut = snapshot.getValue(Tutorial.class);
+                    if (tut.getTutor().getEmail().equals(email) || tut.getApplicant().getEmail().equals(email)){
+                        lstTutorials.add(tut);
+                    }
+                }
+
+                if(lstTutorials.size()>0){
+                    recyclerTutorial.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerTutorial.setItemAnimator(new DefaultItemAnimator());
+                    TutorialAdapter adapter = new TutorialAdapter(getContext(),lstTutorials);
+                    recyclerTutorial.setAdapter(adapter);
+
+                }else{
+                    Toast.makeText(getActivity(),"No tienes Tutorias",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-        return inflatedView;
+
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
