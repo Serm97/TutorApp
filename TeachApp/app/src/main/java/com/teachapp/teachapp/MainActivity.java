@@ -3,9 +3,11 @@ package com.teachapp.teachapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,17 +22,25 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ProfileFragment.OnFragmentInteractionListener,
         TutorialsFragment.OnFragmentInteractionListener,
         NotificationsFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         HistoryFragment.OnFragmentInteractionListener,
-        SeekerFragment.OnFragmentInteractionListener{
+        SeekerFragment.OnFragmentInteractionListener,
+        MatchFragment.OnFragmentInteractionListener{
 
     private FirebaseAuth mAuth;
+    TextView userT;
+    TextView emailT;
+    User userGeneric;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +48,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,19 +59,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
-        TextView user = (TextView) headerView.findViewById(R.id.txt_name_user);
-        TextView email = (TextView) headerView.findViewById(R.id.txt_email_user);
+        userT = (TextView) headerView.findViewById(R.id.txt_name_user);
+        emailT = (TextView) headerView.findViewById(R.id.txt_email_user);
 
         Bundle mybundle = this.getIntent().getExtras();
 
         if(mybundle!=null)
         {
             String name = mybundle.getString("nombreUsuario");
-            Toast.makeText(MainActivity.this, name,
-                    Toast.LENGTH_LONG).show();
+            findUserFirebase(name);
 
-            user.setText(name.toUpperCase());
-            email.setText(name.toLowerCase());
         }
 
         getSupportFragmentManager()
@@ -79,6 +77,28 @@ public class MainActivity extends AppCompatActivity
                 .commit();
 
         mAuth = FirebaseAuth.getInstance();
+    }
+
+    private void findUserFirebase(String name) {
+
+        Query q = FireDatabase.getInstance().child("User").orderByChild("email").equalTo(name).limitToFirst(1);
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
+                        userGeneric = dataSnap.getValue(User.class);
+                    }
+                }
+                userT.setText(userGeneric.getName().toUpperCase());
+                emailT.setText(userGeneric.getEmail().toLowerCase());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -132,6 +152,11 @@ public class MainActivity extends AppCompatActivity
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_profile) {
             miFragment = new ProfileFragment();
+
+            Bundle args = new Bundle();
+            args.putSerializable("mainUser",userGeneric);
+            miFragment.setArguments(args);
+
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_tutorials) {
             miFragment = new TutorialsFragment();
@@ -163,6 +188,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 

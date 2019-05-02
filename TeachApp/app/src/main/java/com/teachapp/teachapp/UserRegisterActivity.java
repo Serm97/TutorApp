@@ -1,8 +1,12 @@
 package com.teachapp.teachapp;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class UserRegisterActivity extends BaseActivity {
 
@@ -40,10 +46,13 @@ public class UserRegisterActivity extends BaseActivity {
     private AutoCompleteTextView aName;
     private AutoCompleteTextView aLastName;
     private AutoCompleteTextView aEmail;
-    private AutoCompleteTextView aBirthdate;
+    private AutoCompleteTextView aBirthdate,aPhone;
     private EditText ePassword,eAreas;
     private Spinner aUniversity;
     private FirebaseAuth mAuth;
+    private TextInputLayout tiAreas;
+
+    DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +61,19 @@ public class UserRegisterActivity extends BaseActivity {
 
         aName = (AutoCompleteTextView) findViewById(R.id.autName);
         aLastName = (AutoCompleteTextView) findViewById(R.id.autLastName);
-        aEmail= (AutoCompleteTextView) findViewById(R.id.autEmail);
+        aEmail = (AutoCompleteTextView) findViewById(R.id.autEmail);
         aBirthdate = (AutoCompleteTextView) findViewById(R.id.autBirthDate);
+        aPhone = (AutoCompleteTextView) findViewById(R.id.autPhone);
         aUniversity = (Spinner) findViewById(R.id.spinnerU);
         ePassword = (EditText) findViewById(R.id.txtPasswordR);
         eAreas = (EditText) findViewById(R.id.txtAreas);
+        tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
 
         Button btnRegisterUser = (Button) findViewById(R.id.btn_register);
 
         LlenarSpinnerUniversities();
+        LlenarAreas();
+        AsignarCalendario();
 
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +82,50 @@ public class UserRegisterActivity extends BaseActivity {
                 Register();
             }
         });
-        LlenarAreas();
 
         mAuth = FirebaseAuth.getInstance();
     }
 
+    private void AsignarCalendario() {
+        tiAreas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenCalendar();
+            }
+        });
+        aBirthdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenCalendar();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month=month+1;
+                String y = String.valueOf(year);
+                String m = String.valueOf(month < 10 ? "0"+month : month);
+                String d = String.valueOf(dayOfMonth < 10 ? "0"+dayOfMonth:dayOfMonth);
+                aBirthdate.setText(d+"/"+m+"/"+y);
+            }
+        };
+    }
+
+    public void OpenCalendar(){
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog = new DatePickerDialog(
+                UserRegisterActivity.this,
+                android.R.style.Theme_DeviceDefault_Light_Dialog,
+                mDateSetListener,
+                year,month,day
+        );
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialog.show();
+    }
     @Override
     public void onStart() {
         super.onStart();
@@ -186,13 +238,14 @@ public class UserRegisterActivity extends BaseActivity {
         String[] areas = eAreas.getText().toString().split(",");
         ArrayList<Area> list = new ArrayList();
         for (int i = 0; i<areas.length;i++){
-            list.add(new Area(areas[i],new Categorie()));
+            list.add(new Area(areas[i]));
         }
 
         User user = new User(
                 aEmail.getText().toString(),
                 aName.getText().toString(),
                 aLastName.getText().toString(),
+                aPhone.getText().toString(),
                 "Bogotá D.C.",
                 aUniversity.getSelectedItem().toString(),
                 list

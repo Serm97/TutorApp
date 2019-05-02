@@ -18,85 +18,15 @@
                 android:drawableLeft="@android:drawable/ic_menu_set_as"
                 android:drawableTint="@android:color/holo_blue_bright"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/historial"
+                android:text="Request"
                 android:textAppearance="@android:style/TextAppearance.Holo.Large"
                 tools:ignore="UnusedAttribute" />
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_margin="15dp" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
->
-            <TextView
-                android:id="@+id/notification1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tuviste una tutoria de ingles"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin" />
-
-        </RelativeLayout>
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_margin="15dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/notification2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tuviste una tutoria de ingles"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin" />
-
-        </RelativeLayout>
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_margin="15dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/notification3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tuviste una tutoria de ingles"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin" />
-
-        </RelativeLayout>
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_margin="15dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/notification4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tuviste una tutoria de ingles"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin" />
-
-        </RelativeLayout>
 
         </LinearLayout>
 

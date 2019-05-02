@@ -5,7 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -33,7 +36,7 @@
                 android:src="@mipmap/student"/>
 
             <TextView
-                android:id="@+id/start"
+                android:id="@+id/scoreProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -45,16 +48,7 @@
                 android:drawableEnd="@android:drawable/btn_star_big_on"
                 android:padding="15sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:text="@string/skills"
-                android:textStyle="bold|italic"
-                android:textSize="23sp"
-                android:layout_below="@+id/start"
-                android:layout_marginTop="130dp"
-                android:padding="10dp" />
+
 
         </RelativeLayout>
 
@@ -68,66 +62,59 @@
             android:padding="@dimen/activity_vertical_margin"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/nomProfile"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:text="@string/nomProfile"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btnCalificar"
-                    android:textStyle="italic"
-                    android:drawableLeft="@android:drawable/star_off"
-                    android:layout_toRightOf="@+id/nomProfile"
-                    android:drawableStart="@android:drawable/star_off"
-                    android:layout_toEndOf="@+id/nomProfile"
-                    android:textColor="@color/colorPrimary"/>
-            </RelativeLayout>
-
             <TextView
+                android:id="@+id/nomProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="@string/nomProfile"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/emailProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:padding="5dp"
-                android:textStyle="italic"
                 android:text="@string/emailProfile"/>
 
             <TextView
+                android:id="@+id/cityProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="5dp"
-                android:textStyle="italic"
                 android:text="@string/ciuProfile"/>
 
             <TextView
+                android:id="@+id/universityProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="5dp"
-                android:textStyle="italic"
                 android:text="@string/uniProfile"/>
 
             <TextView
+                android:id="@+id/numberTutProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="5dp"
                 android:textStyle="italic"
-                android:text="@string/numProfile"
-                android:textAlignment="textEnd"
-                android:gravity="end" />
+                android:text="@string/numProfile" />
+
+            <TextView
+                android:id="@+id/areasProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold|italic"
+                android:textSize="20sp"
+                android:padding="10dp" />
 
             <Button
+                android:id="@+id/btnRequest"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -148,4 +135,5 @@
 
     </LinearLayout>
 
+    </ScrollView>
 </FrameLayout>

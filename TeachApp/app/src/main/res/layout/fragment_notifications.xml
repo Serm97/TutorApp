@@ -26,91 +26,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:outlineSpotShadowColor="@color/colorPrimaryDark"
-            >
+            android:outlineSpotShadowColor="@color/colorPrimaryDark">
 
-            <TextView
-                android:id="@+id/notification"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_notifications"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TIenes una solicitud de tutoria de Anna"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                />
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_view_notifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver"
-                android:drawableRight="@android:drawable/ic_media_play"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:layout_alignTop="@+id/notification"
-                android:layout_alignRight="@+id/notification"
-                android:layout_margin="5dp"
-                android:backgroundTint="@android:color/white"
-                />
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            >
-
-            <TextView
-                android:id="@+id/notification1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TIenes una solicitud de tutoria de Anna"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver"
-                android:drawableRight="@android:drawable/ic_media_play"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:layout_alignTop="@+id/notification1"
-                android:layout_alignRight="@+id/notification1"
-                android:layout_margin="5dp"
-                android:backgroundTint="@android:color/white"
-                />
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            >
-
-            <TextView
-                android:id="@+id/notification3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TIenes una solicitud de tutoria de Anna"
-                android:textStyle="italic"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver"
-                android:drawableRight="@android:drawable/ic_media_play"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:layout_alignTop="@+id/notification3"
-                android:layout_alignRight="@+id/notification3"
-                android:layout_margin="5dp"
-                android:backgroundTint="@android:color/white"
-                />
-
+            </android.support.v7.widget.RecyclerView>
 
         </RelativeLayout>
     </LinearLayout>

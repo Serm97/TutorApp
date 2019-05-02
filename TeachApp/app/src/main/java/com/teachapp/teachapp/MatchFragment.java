@@ -1,39 +1,37 @@
 package com.teachapp.teachapp;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CategoriesFragment.OnFragmentInteractionListener} interface
+ * {@link MatchFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CategoriesFragment#newInstance} factory method to
+ * Use the {@link MatchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CategoriesFragment extends Fragment {
+public class MatchFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,16 +40,13 @@ public class CategoriesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Request request;
+    private RecyclerView recyclerUserMatch;
+    private TextView areaSearched,numerResult;
 
     private OnFragmentInteractionListener mListener;
 
-    View vista;
-    RecyclerView recyclerCategories,recyclerUsers;
-    final List<Category> categoryList = new ArrayList<>();
-    final List<User> userList = new ArrayList<>();
-
-
-    public CategoriesFragment() {
+    public MatchFragment() {
         // Required empty public constructor
     }
 
@@ -61,11 +56,11 @@ public class CategoriesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoriesFragment.
+     * @return A new instance of fragment MatchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CategoriesFragment newInstance(String param1, String param2) {
-        CategoriesFragment fragment = new CategoriesFragment();
+    public static MatchFragment newInstance(String param1, String param2) {
+        MatchFragment fragment = new MatchFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,51 +80,57 @@ public class CategoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_categories, container, false);
-        recyclerCategories = (RecyclerView) vista.findViewById(R.id.recycler_categories);
-        recyclerUsers = (RecyclerView) vista.findViewById(R.id.recycler_users);
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        Bundle mybundle = getActivity().getIntent().getExtras();
-        final String email = mybundle.getString("nombreUsuario");
+        View vista = inflater.inflate(R.layout.fragment_match, container, false);
+        recyclerUserMatch = (RecyclerView) vista.findViewById(R.id.recyclerMatch);
+        areaSearched = (TextView) vista.findViewById(R.id.txtAreaSearched);
+        numerResult = (TextView) vista.findViewById(R.id.text_number_result);
 
-//        final ArrayList<Category> cat = new ArrayList<>();
-        FireDatabase.getInstance().child("Utilities").child("Categories").addValueEventListener(new ValueEventListener() {
+        if (getArguments() != null){
+            if (getArguments().getSerializable("requestMatch") != null){
+                request = (Request)getArguments().getSerializable("requestMatch");
+                findMatchRequest(request);
+            }
+        }
+
+        areaSearched.setText("Se Busca: "+request.getAreaS().getName());
+        return vista;
+    }
+
+    private void findMatchRequest(final Request request) {
+        final ArrayList<Request> lstRequestMatch = new ArrayList<>();
+        final ArrayList<Request> lstRequest = new ArrayList<>();
+        FireDatabase.getInstance().child("Request").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Category category = snapshot.getValue(Category.class);
-                    categoryList.add(category);
-                    //cat.add(category);
-                }
-                //recyclerCategories.setLayoutManager(new GridLayoutManager(getActivity(),2));
-                recyclerCategories.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerCategories.setItemAnimator(new DefaultItemAnimator());
-                CategoryAdapter adapter = new CategoryAdapter(getContext(),categoryList);
-
-                recyclerCategories.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        //Lista de ususarios
-        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User u = snapshot.getValue(User.class);
-                    if (!u.getEmail().equals(email)){
-                        userList.add(u);
+                    Request req = snapshot.getValue(Request.class);
+                    if(!validateUser(req)){
+                        if(validateMatch(req)){
+                            lstRequestMatch.add(req);
+                        }else if (req.getAreaO().getName().equals(request.getAreaS().getName())){
+                            lstRequest.add(req);
+                        }
                     }
                 }
-                recyclerUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                recyclerUsers.setItemAnimator(new DefaultItemAnimator());
-                UserAdapter adapter = new UserAdapter(getContext(),userList);
-                recyclerUsers.setAdapter(adapter);
+                for(Request r : lstRequest){
+                    lstRequestMatch.add(r);
+                }
+                numerResult.setText("Resultados: "+lstRequestMatch.size());
+                if(lstRequestMatch.size()>0){
+                    recyclerUserMatch.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerUserMatch.setItemAnimator(new DefaultItemAnimator());
+                    UserMatchAdapter adapter = new UserMatchAdapter(getContext(),lstRequestMatch,request);
+                    recyclerUserMatch.setAdapter(adapter);
+                }else{
+                    Toast.makeText(getActivity(),"No hay coincidencias por el momento",Toast.LENGTH_LONG).show();
+                    AppCompatActivity activity = (AppCompatActivity) getActivity();
+                    activity.getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content_main,new HistoryFragment())
+                            .commit();
+                }
+
+
             }
 
             @Override
@@ -137,8 +138,15 @@ public class CategoriesFragment extends Fragment {
 
             }
         });
+    }
 
-        return vista;
+    private boolean validateMatch(Request req) {
+        return ((req.getAreaO().getName().equals(request.getAreaS().getName())) &&
+                (req.getAreaS().getName().equals(request.getAreaO().getName())));
+    }
+
+    private boolean validateUser(Request req) {
+        return req.getApplicant().getEmail().equals(request.getApplicant().getEmail());
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -179,5 +187,4 @@ public class CategoriesFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }
