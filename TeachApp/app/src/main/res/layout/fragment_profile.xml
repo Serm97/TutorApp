@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,23 +31,25 @@
 
             <ImageView
                 android:id="@+id/imageProfile"
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_width="348dp"
+                android:layout_height="264dp"
                 android:background="@android:color/background_light"
-                android:src="@mipmap/student"/>
+                android:src=""
+                app:srcCompat="@drawable/study" />
 
             <TextView
                 android:id="@+id/scoreProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:drawableRight="@android:drawable/btn_star_big_on"
-                android:text="@string/level"
-                android:textStyle="bold"
-                android:textSize="25sp"
-                android:textColor="@android:color/holo_orange_light"
                 android:drawableEnd="@android:drawable/btn_star_big_on"
-                android:padding="15sp"/>
+                android:drawableRight="@android:drawable/btn_star_big_on"
+                android:gravity="center_horizontal"
+                android:padding="15sp"
+                android:text="@string/level"
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/dosis_medium" />
 
 
 
@@ -66,68 +69,58 @@
                 android:id="@+id/nomProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="@string/nomProfile"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/architects_daughter" />
 
             <TextView
                 android:id="@+id/emailProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="5dp"
-                android:text="@string/emailProfile"/>
+                android:text="@string/emailProfile"
+                android:textSize="22sp"
+                app:fontFamily="@font/dosis_medium" />
 
             <TextView
                 android:id="@+id/cityProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="5dp"
-                android:text="@string/ciuProfile"/>
+                android:text="@string/ciuProfile"
+                android:textSize="22sp"
+                app:fontFamily="@font/dosis_medium" />
 
             <TextView
                 android:id="@+id/universityProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="5dp"
-                android:text="@string/uniProfile"/>
+                android:text="@string/uniProfile"
+                android:textSize="22sp"
+                app:fontFamily="@font/dosis_medium" />
 
             <TextView
                 android:id="@+id/numberTutProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:gravity="center"
                 android:padding="5dp"
+                android:text="@string/numProfile"
+                android:textSize="22sp"
                 android:textStyle="italic"
-                android:text="@string/numProfile" />
+                app:fontFamily="@font/dosis_medium" />
 
-            <TextView
-                android:id="@+id/areasProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold|italic"
-                android:textSize="20sp"
-                android:padding="10dp" />
+
 
             <Button
                 android:id="@+id/btnRequest"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:background="@android:color/holo_blue_dark"
+               style="@style/btnBlue"
                 android:text="@string/solProfile"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:textColor="#fff"
-                android:drawableLeft="@android:drawable/presence_online"
-                android:drawableStart="@android:drawable/presence_online">
+                android:layout_marginTop="20dp">
 
             </Button>
 

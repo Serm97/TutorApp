@@ -35,5 +35,9 @@
     <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
     <string name="btnCalificar">Qualify</string>
     <string name="historial">History</string>
+    <string name="format_date">dd/mm/yyyy</string>
+    <string name="format_hour">hh:mm</string>
+    <string name="teach">TEACH</string>
+    <string name="buscar_tutoria">Find My Tutor</string>
 
 </resources>
