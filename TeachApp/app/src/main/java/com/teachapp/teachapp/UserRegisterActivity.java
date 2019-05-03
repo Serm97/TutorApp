@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class UserRegisterActivity extends BaseActivity {
     private EditText ePassword,eAreas;
     private Spinner aUniversity;
     private FirebaseAuth mAuth;
+    private TextInputLayout tiAreas;
 
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -65,6 +67,7 @@ public class UserRegisterActivity extends BaseActivity {
         aUniversity = (Spinner) findViewById(R.id.spinnerU);
         ePassword = (EditText) findViewById(R.id.txtPasswordR);
         eAreas = (EditText) findViewById(R.id.txtAreas);
+        tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
 
         Button btnRegisterUser = (Button) findViewById(R.id.btn_register);
 
@@ -84,22 +87,16 @@ public class UserRegisterActivity extends BaseActivity {
     }
 
     private void AsignarCalendario() {
+        tiAreas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenCalendar();
+            }
+        });
         aBirthdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        UserRegisterActivity.this,
-                        android.R.style.Theme_DeviceDefault_Light_Dialog,
-                        mDateSetListener,
-                        year,month,day
-                );
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                dialog.show();
+                OpenCalendar();
             }
         });
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -114,6 +111,21 @@ public class UserRegisterActivity extends BaseActivity {
         };
     }
 
+    public void OpenCalendar(){
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog = new DatePickerDialog(
+                UserRegisterActivity.this,
+                android.R.style.Theme_DeviceDefault_Light_Dialog,
+                mDateSetListener,
+                year,month,day
+        );
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialog.show();
+    }
     @Override
     public void onStart() {
         super.onStart();

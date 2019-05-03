@@ -40,15 +40,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
         viewHolderUser.phoneUser.setText(user.getPhone());
         String areas = "";
         for (Area area : user.getAreas()){
-            areas += area.getName();
+            areas += area.getName()+" ";
         }
         viewHolderUser.areasUser.setText(areas);
-        viewHolderUser.iconViewUser.setImageResource(R.drawable.ic_action_user);
+        viewHolderUser.iconViewUser.setImageResource(R.mipmap.student);
         viewHolderUser.elementView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"Click seleccionando: "+user.getName(),Toast.LENGTH_SHORT).show();
-
                 Fragment fragment = new ProfileFragment();
                 Bundle args = new Bundle();
                 args.putSerializable("userToView",user);

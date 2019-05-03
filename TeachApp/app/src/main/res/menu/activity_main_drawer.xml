@@ -5,6 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_categories"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_seeker"
             android:title="Search for tutoring" />
         <item
@@ -17,12 +20,8 @@
             android:id="@+id/nav_notifications"
             android:title="Notifications" />
         <item
-            android:id="@+id/nav_categories"
-            android:title="Categories" />
-
-        <item
             android:id="@+id/nav_history"
-            android:title="History" />
+            android:title="Requests" />
     </group>
 
     <item android:title="Additional">
