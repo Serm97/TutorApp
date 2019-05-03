@@ -34,14 +34,13 @@
                 android:layout_width="348dp"
                 android:layout_height="264dp"
                 android:background="@android:color/background_light"
-                android:src=""
                 app:srcCompat="@drawable/study" />
 
             <TextView
                 android:id="@+id/scoreProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@android:drawable/btn_star_big_on"
+                android:drawableEnd="@android:drawable/btn_star_big_off"
                 android:drawableRight="@android:drawable/btn_star_big_on"
                 android:gravity="center_horizontal"
                 android:padding="15sp"
@@ -51,6 +50,20 @@
                 android:textStyle="bold"
                 app:fontFamily="@font/dosis_medium" />
 
+            <TextView
+                android:id="@+id/areasProfile"
+                android:layout_width="113dp"
+                android:layout_height="148dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginBottom="64dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="@font/dosis_medium" />
 
 
         </RelativeLayout>
@@ -113,8 +126,6 @@
                 android:textSize="22sp"
                 android:textStyle="italic"
                 app:fontFamily="@font/dosis_medium" />
-
-
 
             <Button
                 android:id="@+id/btnRequest"
