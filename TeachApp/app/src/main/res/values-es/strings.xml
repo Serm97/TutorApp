@@ -36,4 +36,5 @@
     <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
     <string name="btnCalificar">Calificar</string>
     <string name="historial">Historial</string>
+    <string name="format_date">dd/mm/yyyy</string>
 </resources>

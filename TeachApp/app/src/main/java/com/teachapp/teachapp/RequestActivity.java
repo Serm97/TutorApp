@@ -17,7 +17,7 @@ public class RequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_request);
 
         Button btnSendRequest = (Button) findViewById(R.id.request_tutorial);
-        btnRegisterUser.setOnClickListener(new View.OnClickListener() {
+        btnSendRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SendRequestTutorial();

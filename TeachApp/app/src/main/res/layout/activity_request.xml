@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -38,7 +39,7 @@
                 android:text="Request Tutorial"
                 android:textSize="30sp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="8dp"></TextView>
 
             <com.example.comboboxtest.ComboBox
                 style="?android:attr/spinnerStyle"
@@ -109,7 +110,7 @@
 
             </com.example.comboboxtest.ComboBox>
 
-            </android.support.design.widget.TextInputLayout>
+
 
             <EditText
                 android:id="@+id/request_dateStart"
@@ -121,7 +122,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="32dp"
-                />
+                android:layout_marginLeft="8dp" />
 
             <EditText
                 android:id="@+id/request_dateEnd"
@@ -133,7 +134,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="32dp"
-                />
+                android:layout_marginLeft="8dp" />
 
             <EditText
                 android:id="@+id/request_timeInit"
@@ -144,7 +145,8 @@
                 android:hint="@string/format_hour"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="8dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp" />
 
             <EditText
                 android:id="@+id/request_timeEnd"
@@ -155,7 +157,8 @@
                 android:hint="@string/format_hour"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="8dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
