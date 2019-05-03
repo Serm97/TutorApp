@@ -22,9 +22,11 @@
 
         <TextView
             android:id="@+id/textView"
-            style="@style/h1"
-            android:layout_marginVertical="50dp"
-            android:text="@string/buscar_tutoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Buscar Tutoria"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,9 +35,10 @@
 
         <TextView
             android:id="@+id/textView2"
-            style="@style/input"
-            android:layout_marginHorizontal="70px"
-            android:text="Area Solicitada" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Area Solicitada"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/spinnerAreaS"
@@ -44,9 +47,10 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_marginHorizontal="70px"
-            style="@style/input"
-            android:text="Area Ofrecida"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Area Ofrecida"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/spinnerAreaO"
@@ -55,20 +59,22 @@
 
         <TextView
             android:id="@+id/textView4"
-            style="@style/input"
-            android:layout_marginHorizontal="70px"
-            android:text="Fecha Limite" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha Limite"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/editDateLimit"
-            android:layout_marginHorizontal="70px"
-            style="@style/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date" />
 
         <Button
             android:id="@+id/btn_find_tutorial"
-            style="@style/btnBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Solicitar" />
     </LinearLayout>
 

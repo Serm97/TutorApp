@@ -31,19 +31,21 @@
 
                 <TextView
                     android:id="@+id/text_msg_notification"
-                    style="@style/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Notification"
-                    />
+                    android:text="Notificacion"
+                    android:textSize="@dimen/notification_title" />
 
                 <TextView
                     android:id="@+id/text_date_notificacion"
-                    style="@style/input"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
                     android:layout_gravity="end"
+                    android:textSize="10dp"
                     android:layout_weight="1"
-                    android:text=" "
-                    android:textAlignment="textEnd" />
+                    android:text="Notificacion"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,17 +55,15 @@
 
                     <Button
                         android:id="@+id/button_accept"
-                        style="@style/btnBlue"
-                        android:layout_marginHorizontal="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="20sp"
                         android:text="Aceptar" />
 
                     <Button
                         android:id="@+id/button_refuse"
-                        style="@style/btnBlue"
-                        android:layout_marginHorizontal="15dp"
-                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Rechazar" />
                 </LinearLayout>

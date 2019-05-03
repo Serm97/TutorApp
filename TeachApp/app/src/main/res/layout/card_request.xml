@@ -36,12 +36,14 @@
 
                     <TextView
                         android:id="@+id/text_area_request"
-                        style="@style/input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:textSize="@dimen/category_title" />
 
                     <TextView
                         android:id="@+id/text_area_offered"
-                        style="@style/input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:textSize="@dimen/category_title" />
 
                 </LinearLayout>
@@ -55,9 +57,8 @@
 
                     <Button
                         android:id="@+id/button_view_request"
-                        style="@style/btnWhite"
-                        android:layout_marginHorizontal="0dp"
-                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Ver" />
 
                 </LinearLayout>
