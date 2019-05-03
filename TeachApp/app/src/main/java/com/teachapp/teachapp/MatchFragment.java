@@ -95,11 +95,67 @@ public class MatchFragment extends Fragment {
                 String search = getArguments().getString("searchMatch");
                 areaSearched.setText("Se busca coincidencia con: "+search);
                 searchUser(search);
+            }else if(getArguments().getSerializable("categoryMatch") != null){
+                Category cat = (Category) getArguments().getSerializable("categoryMatch");
+                if (cat.getAreas()== null){
+                    Toast.makeText(getActivity(),"No hay coincidencias",Toast.LENGTH_LONG).show();
+                    AppCompatActivity activity = (AppCompatActivity) getActivity();
+                    activity.getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content_main,new CategoriesFragment())
+                            .commit();
+                }else if(cat.getAreas().size()>0){
+                    areaSearched.setText("Se busca Categorias en: "+cat.getName());
+                    searchCategory(cat);
+                }
+
             }
         }
 
 
         return vista;
+    }
+
+    private void searchCategory(final Category cat) {
+        final List<User> userList = new ArrayList<>();
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        final String email = mybundle.getString("nombreUsuario");
+
+        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        User u = snapshot.getValue(User.class);
+                        if (!u.getEmail().equals(email)){
+                            for(Area area : cat.getAreas()){
+                                for (Area a : u.getAreas()){
+                                    if (a.getName().equals(area.getName())){
+                                        userList.add(u);
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }
+
+                    }
+                    String conocimientos = "Areas: \n";
+                    for(Area a : cat.getAreas()){
+                        conocimientos += "\t•"+a.getName()+"\n";
+                    }
+                    conocimientos += "\n Resultados: "+userList.size();
+                    numerResult.setText(conocimientos);
+                    recyclerUserMatch.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerUserMatch.setItemAnimator(new DefaultItemAnimator());
+                    UserAdapter adapter = new UserAdapter(getContext(),userList);
+                    recyclerUserMatch.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void searchUser(final String search) {

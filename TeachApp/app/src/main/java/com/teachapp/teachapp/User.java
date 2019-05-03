@@ -129,7 +129,7 @@ public class User implements Serializable {
     }
 }
 
-class Category{
+class Category implements Serializable{
     private String name;
     private List<Area> areas;
     private int icon;

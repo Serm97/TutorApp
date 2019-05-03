@@ -40,7 +40,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
         viewHolderUser.phoneUser.setText(user.getPhone());
         String areas = "";
         for (Area area : user.getAreas()){
-            areas += area.getName();
+            areas += area.getName()+" ";
         }
         viewHolderUser.areasUser.setText(areas);
         viewHolderUser.iconViewUser.setImageResource(R.mipmap.student);
