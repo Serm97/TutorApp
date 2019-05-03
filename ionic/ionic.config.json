@@ -1,7 +1,0 @@
-{
-  "name": "TutorApp",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
