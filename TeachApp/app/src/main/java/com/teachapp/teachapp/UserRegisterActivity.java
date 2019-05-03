@@ -67,7 +67,7 @@ public class UserRegisterActivity extends BaseActivity {
         aUniversity = (Spinner) findViewById(R.id.spinnerU);
         ePassword = (EditText) findViewById(R.id.txtPasswordR);
         eAreas = (EditText) findViewById(R.id.txtAreas);
-        tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
+        //tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
 
         Button btnRegisterUser = (Button) findViewById(R.id.btn_register);
 
@@ -87,7 +87,7 @@ public class UserRegisterActivity extends BaseActivity {
     }
 
     private void AsignarCalendario() {
-        tiAreas.setOnClickListener(new View.OnClickListener() {
+        aBirthdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenCalendar();

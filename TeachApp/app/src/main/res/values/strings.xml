@@ -38,5 +38,6 @@
     <string name="format_date">dd/mm/yyyy</string>
     <string name="format_hour">hh:mm</string>
     <string name="teach">TEACH</string>
+    <string name="buscar_tutoria">Find My Tutor</string>
 
 </resources>
