@@ -9,7 +9,7 @@
     <dimen name="card_category_radius">0dp</dimen>
     <dimen name="category_cover_height">100dp</dimen>
     <dimen name="category_title_padding">10dp</dimen>
-    <dimen name="category_title">20dp</dimen>
+    <dimen name="category_title">15dp</dimen>
     <dimen name="notification_title">16dp</dimen>
     <dimen name="ic_category_overflow_width">20dp</dimen>
     <dimen name="ic_category_overflow_height">30dp</dimen>
