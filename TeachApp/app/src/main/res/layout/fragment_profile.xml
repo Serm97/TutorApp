@@ -34,7 +34,7 @@
                 android:layout_width="348dp"
                 android:layout_height="264dp"
                 android:background="@android:color/background_light"
-                android:src=""
+                android:src="@mipmap/student"
                 app:srcCompat="@drawable/study" />
 
             <TextView
