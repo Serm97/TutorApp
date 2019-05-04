@@ -255,8 +255,6 @@ public class ProfileFragment extends Fragment {
         dialog.show();
     }
 
-
-
     private void loadInfoUser(User user) {
         String name = user.getName() != null ? user.getName() : "";
         name += user.getLastName() != null ? " "+user.getLastName() : "";
