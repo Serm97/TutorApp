@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -167,13 +168,11 @@ public class MatchFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User u = snapshot.getValue(User.class);
-                    if (!u.getEmail().equals(email)){
-                        if (u.getName().toLowerCase().contains(search.toLowerCase()) ||
-                                u.getLastName().toLowerCase().contains(search.toLowerCase())){
+                        if (!u.getEmail().equals(email) &&
+                                (u.getName().toLowerCase().contains(search.toLowerCase()) ||
+                                u.getLastName().toLowerCase().contains(search.toLowerCase()))){
                             userList.add(u);
                         }
-
-                    }
                 }
                 numerResult.setText("Resultados: "+userList.size());
                 recyclerUserMatch.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -228,7 +227,7 @@ public class MatchFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",""+databaseError.getDetails());
             }
         });
     }
