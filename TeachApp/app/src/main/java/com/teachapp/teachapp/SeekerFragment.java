@@ -47,7 +47,6 @@ public class SeekerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View vista;
     private EditText editFecha;
     private Spinner spinnerAO;
     private Spinner spinnerAS;
@@ -90,8 +89,9 @@ public class SeekerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_seeker, container, false);
+        View vista = inflater.inflate(R.layout.fragment_seeker, container, false);
         ((BaseActivity)getActivity()).hideKeyboard(vista);
         editFecha = (EditText) vista.findViewById(R.id.editDateLimit);
         spinnerAO = (Spinner) vista.findViewById(R.id.spinnerAreaO);

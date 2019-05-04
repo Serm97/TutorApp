@@ -66,8 +66,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     public class ViewHolderNotifications extends RecyclerView.ViewHolder {
 
-        TextView dateView,messageView;
-        Button btnAccept,btnRefuse;
+        public TextView dateView,messageView;
+        public Button btnAccept,btnRefuse;
 
         public ViewHolderNotifications(@NonNull View itemView) {
             super(itemView);
