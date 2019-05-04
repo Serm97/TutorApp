@@ -56,7 +56,6 @@ public class ProfileFragment extends Fragment {
     private EditText editFecha;
     private Spinner spinnerAO;
     private Spinner spinnerAS;
-    private Button btnFind;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -175,7 +174,7 @@ public class ProfileFragment extends Fragment {
     private void loadAreasOffered(final Dialog dialog) {
         final ArrayList<String> comboO = new ArrayList<>();
         final ArrayList<User> users = new ArrayList<>();
-        btnFind = (Button) dialog.findViewById(R.id.btn_find_tutorial);
+        Button btnFind = (Button) dialog.findViewById(R.id.btn_find_tutorial);
 
         Bundle mybundle = getActivity().getIntent().getExtras();
         String email = mybundle.getString("nombreUsuario");
@@ -258,7 +257,9 @@ public class ProfileFragment extends Fragment {
         spinnerAS.setAdapter(adapter);
         spinnerAS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("onItemSelected","Item seleccionado");
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Log.e("onNothingSelected","No hay nada seleccionado");

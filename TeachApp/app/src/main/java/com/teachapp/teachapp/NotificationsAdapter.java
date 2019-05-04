@@ -54,7 +54,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         viewHolderNotifications.btnRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(mContext,"Tutoria Rechazada",Toast.LENGTH_LONG).show();
             }
         });
     }

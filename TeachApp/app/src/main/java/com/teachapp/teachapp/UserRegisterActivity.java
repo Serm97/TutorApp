@@ -48,7 +48,7 @@ public class UserRegisterActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private TextInputLayout tiAreas;
 
-    DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -293,6 +293,7 @@ public class UserRegisterActivity extends BaseActivity {
         return valid;
     }
 
+    /*
     private void sendEmailVerification() {
 
         // Send verification email
@@ -317,7 +318,7 @@ public class UserRegisterActivity extends BaseActivity {
                 });
         // [END send_email_verification]
     }
-
+*/
     public void openDialog(View view) {
         hideKeyboard(view);
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(UserRegisterActivity.this);
