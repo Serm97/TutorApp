@@ -27,14 +27,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ProfileFragment.OnFragmentInteractionListener,
         TutorialsFragment.OnFragmentInteractionListener,
         NotificationsFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         HistoryFragment.OnFragmentInteractionListener,
-        SeekerFragment.OnFragmentInteractionListener{
+        SeekerFragment.OnFragmentInteractionListener,
+        MatchFragment.OnFragmentInteractionListener{
 
     private FirebaseAuth mAuth;
     TextView userT;
@@ -47,15 +48,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -160,6 +152,11 @@ public class MainActivity extends AppCompatActivity
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_profile) {
             miFragment = new ProfileFragment();
+
+            Bundle args = new Bundle();
+            args.putSerializable("mainUser",userGeneric);
+            miFragment.setArguments(args);
+
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_tutorials) {
             miFragment = new TutorialsFragment();
@@ -191,6 +188,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 

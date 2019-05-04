@@ -1,5 +1,7 @@
 package com.teachapp.teachapp;
 
+import android.support.v7.widget.RecyclerView;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -127,7 +129,7 @@ public class User implements Serializable {
     }
 }
 
-class Category{
+class Category implements Serializable{
     private String name;
     private List<Area> areas;
     private int icon;
@@ -166,7 +168,7 @@ class Category{
     }
 }
 
-class Area{
+class Area implements Serializable{
 
     private String name;
 
@@ -187,14 +189,29 @@ class Area{
 
 }
 
-class Notification{
+class Notification implements Serializable{
 
+    private User toUser;
     private Date notificationDate;
     private String message;
+    private Request request;
 
-    public Notification(Date notificationDate, String message) {
+    public Notification() {
+    }
+
+    public Notification(User toUser, Date notificationDate, String message, Request request) {
+        this.toUser = toUser;
         this.notificationDate = notificationDate;
         this.message = message;
+        this.request = request;
+    }
+
+    public User getToUser() {
+        return toUser;
+    }
+
+    public void setToUser(User toUser) {
+        this.toUser = toUser;
     }
 
     public Date getNotificationDate() {
@@ -212,6 +229,14 @@ class Notification{
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
 }
 
 class Tutorial{
@@ -222,6 +247,9 @@ class Tutorial{
     private Area requestedArea;
     private Date date;
     private double score;
+
+    public Tutorial() {
+    }
 
     public Tutorial(User applicant, User tutor, Area area, Area requestedArea, Date date, double score) {
         this.applicant = applicant;
@@ -281,7 +309,7 @@ class Tutorial{
     }
 }
 
-class Request{
+class Request implements Serializable{
     private User applicant;
     private Area areaO;
     private Area areaS;

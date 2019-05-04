@@ -1,7 +1,10 @@
 package com.teachapp.teachapp;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,15 +76,28 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         myViewHolder.iconView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"Click seleccionando: "+cat.getName(),Toast.LENGTH_SHORT).show();
+                callCategoryMatch(cat);
             }
         });
         myViewHolder.elementView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"Click seleccionando: "+cat.getName(),Toast.LENGTH_SHORT).show();
+                callCategoryMatch(cat);
             }
         });
+    }
+
+    private void callCategoryMatch(Category cat) {
+        Fragment fragment = new MatchFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("categoryMatch",cat);
+        fragment.setArguments(args);
+
+        AppCompatActivity activity = (AppCompatActivity) mContext;
+        activity.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_main,fragment)
+                .commit();
     }
 
     @Override

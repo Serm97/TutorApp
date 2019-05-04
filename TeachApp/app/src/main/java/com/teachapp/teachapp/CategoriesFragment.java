@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,9 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,9 +49,12 @@ public class CategoriesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     View vista;
+    EditText textSearch;
+    ImageButton buttonSearch;
     RecyclerView recyclerCategories,recyclerUsers;
     final List<Category> categoryList = new ArrayList<>();
     final List<User> userList = new ArrayList<>();
+
 
 
     public CategoriesFragment() {
@@ -85,9 +92,14 @@ public class CategoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_categories, container, false);
+
         recyclerCategories = (RecyclerView) vista.findViewById(R.id.recycler_categories);
         recyclerUsers = (RecyclerView) vista.findViewById(R.id.recycler_users);
+        textSearch = (EditText) vista.findViewById(R.id.text_search_home);
+        buttonSearch = (ImageButton) vista.findViewById(R.id.button_search_home);
 
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Bundle mybundle = getActivity().getIntent().getExtras();
         final String email = mybundle.getString("nombreUsuario");
 
@@ -136,6 +148,22 @@ public class CategoriesFragment extends Fragment {
             }
         });
 
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new MatchFragment();
+                Bundle args = new Bundle();
+                args.putString("searchMatch",textSearch.getText().toString());
+                fragment.setArguments(args);
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_main,fragment)
+                        .commit();
+
+            }
+        });
         return vista;
     }
 

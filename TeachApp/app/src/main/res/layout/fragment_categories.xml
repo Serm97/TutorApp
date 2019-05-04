@@ -12,39 +12,38 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:layout_width="match_parent"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/textCategoria"
-                android:layout_width="300dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Buscar..."
-                android:inputType="text"
-                android:padding="@dimen/activity_horizontal_margin" />
+                android:padding="@dimen/activity_horizontal_margin">
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_toEndOf="@+id/textCategoria"
-                android:layout_toRightOf="@+id/textCategoria"
-                android:background="#FFFFFFE6"
-                android:drawableLeft="@android:drawable/ic_menu_search"
-                android:drawableTint="@color/design_default_color_primary"
-                android:gravity="center"
-                android:padding="@dimen/activity_vertical_margin"
-                android:textAlignment="center" />
+                <EditText
+                    android:id="@+id/text_search_home"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="Buscar..."
+                    android:inputType="text"
+                    android:paddingTop="16dp"
+                    android:padding="@dimen/activity_horizontal_margin" />
 
-        </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/button_search_home"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/grey_100"
+                    android:src="@android:drawable/ic_search_category_default" />
 
+            </RelativeLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -57,7 +56,7 @@
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/category"
                         android:drawableEnd="@android:drawable/ic_dialog_dialer"
-                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:drawableTint="@android:color/background_dark"
                         android:textSize="25sp"
                         android:textStyle="bold"
                         android:drawableRight="@android:drawable/ic_dialog_dialer" />
@@ -81,7 +80,7 @@
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="Tutores"
                         android:drawableEnd="@drawable/ic_action_user"
-                        android:drawableTint="@android:color/holo_blue_bright"
+                        android:drawableTint="@android:color/background_dark"
                         android:textSize="25sp"
                         android:textStyle="bold"
                         android:drawableRight="@drawable/ic_action_user" />

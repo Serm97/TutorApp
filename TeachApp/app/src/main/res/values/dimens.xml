@@ -10,10 +10,12 @@
     <dimen name="category_cover_height">100dp</dimen>
     <dimen name="category_title_padding">10dp</dimen>
     <dimen name="category_title">15dp</dimen>
+    <dimen name="notification_title">16dp</dimen>
     <dimen name="ic_category_overflow_width">20dp</dimen>
     <dimen name="ic_category_overflow_height">30dp</dimen>
     <dimen name="ic_category_overflow_margin_top">10dp</dimen>
     <dimen name="info_count_padding_bottom">5dp</dimen>
     <dimen name="info_count">12dp</dimen>
     <dimen name="user_cover_height">120dp</dimen>
+    <dimen name="match_cover_height">150dp</dimen>
 </resources>
