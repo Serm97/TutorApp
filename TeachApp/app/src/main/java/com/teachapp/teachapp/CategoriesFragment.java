@@ -138,7 +138,7 @@ public class CategoriesFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",""+databaseError.getDetails());
             }
         });
     }

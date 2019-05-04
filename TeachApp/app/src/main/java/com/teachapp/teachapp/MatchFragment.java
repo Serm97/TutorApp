@@ -43,7 +43,7 @@ public class MatchFragment extends Fragment {
     private String mParam2;
     private Request request;
     private RecyclerView recyclerUserMatch;
-    private TextView areaSearched,numerResult;
+    private TextView numerResult;
 
     private OnFragmentInteractionListener mListener;
 
@@ -83,7 +83,7 @@ public class MatchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_match, container, false);
         recyclerUserMatch = (RecyclerView) vista.findViewById(R.id.recyclerMatch);
-        areaSearched = (TextView) vista.findViewById(R.id.txtAreaSearched);
+        TextView areaSearched = (TextView) vista.findViewById(R.id.txtAreaSearched);
         numerResult = (TextView) vista.findViewById(R.id.text_number_result);
 
         if (getArguments() != null){
@@ -183,7 +183,7 @@ public class MatchFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",databaseError.getDetails());
             }
         });
     }

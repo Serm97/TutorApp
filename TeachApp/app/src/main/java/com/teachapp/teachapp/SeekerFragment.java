@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -218,12 +219,12 @@ public class SeekerFragment extends Fragment {
         spinnerAS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                Log.e("onItemSelected","Seleccionado");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.e("onItemSelected","No se selecciono nada");
             }
         });
     }

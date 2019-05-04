@@ -35,9 +35,9 @@ public class MainActivity extends BaseActivity
         MatchFragment.OnFragmentInteractionListener{
 
     private FirebaseAuth mAuth;
-    TextView userT;
-    TextView emailT;
-    User userGeneric;
+    private TextView userT;
+    private TextView emailT;
+    private User userGeneric;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +102,7 @@ public class MainActivity extends BaseActivity
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Log.e("User",currentUser.getEmail());
     }
 
     @Override
