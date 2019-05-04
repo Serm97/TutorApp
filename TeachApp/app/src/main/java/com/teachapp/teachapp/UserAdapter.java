@@ -68,9 +68,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
 
     public class ViewHolderUser extends RecyclerView.ViewHolder {
 
-        TextView nameUser,emailUser,universityUser,phoneUser,areasUser;
-        ImageView iconViewUser;
-        View elementView;
+        public TextView nameUser,emailUser,universityUser,phoneUser,areasUser;
+        public ImageView iconViewUser;
+        public View elementView;
 
         public ViewHolderUser(@NonNull View itemView) {
             super(itemView);

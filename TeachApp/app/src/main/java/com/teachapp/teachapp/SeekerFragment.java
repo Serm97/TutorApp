@@ -47,12 +47,12 @@ public class SeekerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    View vista;
-    EditText editFecha;
-    Spinner spinnerAO;
-    Spinner spinnerAS;
-    Button btnFind;
-    DatePickerDialog.OnDateSetListener mDateSetListener;
+    private View vista;
+    private EditText editFecha;
+    private Spinner spinnerAO;
+    private Spinner spinnerAS;
+    private Button btnFind;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private OnFragmentInteractionListener mListener;
 

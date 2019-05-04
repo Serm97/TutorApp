@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.ViewHolderTutorials> {
 
-    private Context mContext;
+    public Context mContext;
     private List<Tutorial> tutorialList;
 
     public TutorialAdapter(Context mContext, List<Tutorial> tutorialList) {
@@ -45,7 +45,7 @@ public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.ViewHo
 
     public class ViewHolderTutorials extends RecyclerView.ViewHolder {
 
-        TextView userView,tutoView,areaO,areaR,date;
+        public TextView userView,tutoView,areaO,areaR,date;
 
         public ViewHolderTutorials(@NonNull View itemView) {
             super(itemView);

@@ -65,8 +65,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
     public class ViewHolderRequest extends RecyclerView.ViewHolder {
 
-        TextView areaO,areaR;
-        Button btnSearch;
+        public TextView areaO,areaR;
+        public Button btnSearch;
 
         public ViewHolderRequest(@NonNull View itemView) {
             super(itemView);
