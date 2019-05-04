@@ -12,12 +12,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            style="@style/h1"
             android:padding="@dimen/activity_horizontal_margin"
             android:text="Notificaciones"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
 

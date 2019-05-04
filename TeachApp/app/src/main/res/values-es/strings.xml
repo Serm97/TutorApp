@@ -45,4 +45,5 @@
     <string name="area_offered">Área Ofrecida</string>
     <string name="deadline">Fecha Limite</string>
     <string name="send_request">Petición realizada!</string>
+    <string name="dark_theme">Dark Theme</string>
 </resources>

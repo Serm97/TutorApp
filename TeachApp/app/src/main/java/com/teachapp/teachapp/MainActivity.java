@@ -2,6 +2,8 @@ package com.teachapp.teachapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -44,6 +46,8 @@ public class MainActivity extends BaseActivity
     TextView userT;
     TextView emailT;
     User userGeneric;
+    SharedPreferences sharedPreference;
+    Integer theme = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +138,6 @@ public class MainActivity extends BaseActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -173,8 +173,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_history) {
             miFragment = new HistoryFragment();
             fragmentSeleccionado = true;
-        } else if (id == R.id.nav_info) {
-
         } else if (id == R.id.nav_exit) {
             mAuth.signOut();
             Intent intent = new Intent(this,LoginActivity.class);
@@ -200,4 +198,31 @@ public class MainActivity extends BaseActivity
 
     }
 
+    public void changeTheme(MenuItem item) {
+        String tema = "";
+        Log.e("DEBUGGGG", String.valueOf(theme));
+
+        switch (theme){
+            case 0:
+                setTheme(R.style.DarTheme_Theme);
+                theme = 1;
+                tema = "Dark Theme";
+                break;
+            case 1:
+                theme = 0;
+                setTheme(R.style.AppTheme);
+                tema = "Light Theme";
+                break;
+            default:
+                theme = 0;
+                setTheme(R.style.AppTheme);
+                tema = "Light Theme";
+
+        }
+
+
+        Toast.makeText(this, tema,
+                Toast.LENGTH_LONG).show();
+
+    }
 }

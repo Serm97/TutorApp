@@ -6,6 +6,20 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="DarTheme.Theme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/almost_white</item>
+        <item name="colorPrimaryDark">@color/green_400</item>
+        <item name="colorAccent">@color/green_200</item>
+        <item name="android:background">@color/blue_grey_900</item>
+        <item name="android:colorBackground">@color/blue_grey_900</item>
+        <item name="android:textColor">@color/almost_white</item>
+        <item name="android:textColorLink">@color/green_200</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

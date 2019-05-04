@@ -46,5 +46,6 @@
     <string name="area_offered">Offered Area</string>
     <string name="deadline">Deadline</string>
     <string name="send_request">Request made!</string>
+    <string name="dark_theme">Dark Theme</string>
 
 </resources>
