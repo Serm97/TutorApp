@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -66,32 +67,32 @@ public class UserRegisterActivity extends BaseActivity {
 
         Button btnRegisterUser = (Button) findViewById(R.id.btn_register);
 
-        LlenarSpinnerUniversities();
-        LlenarAreas();
-        AsignarCalendario();
+        llenarSpinnerUniversities();
+        llenarAreas();
+        asignarCalendario();
 
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hideKeyboard(view);
-                Register();
+                registeUser();
             }
         });
 
         mAuth = FirebaseAuth.getInstance();
     }
 
-    private void AsignarCalendario() {
+    private void asignarCalendario() {
         tiAreas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenCalendar();
+                openCalendar();
             }
         });
         aBirthdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenCalendar();
+                openCalendar();
             }
         });
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -106,7 +107,7 @@ public class UserRegisterActivity extends BaseActivity {
         };
     }
 
-    public void OpenCalendar(){
+    public void openCalendar(){
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -132,7 +133,7 @@ public class UserRegisterActivity extends BaseActivity {
         }
     }
 
-    private void LlenarSpinnerUniversities() {
+    private void llenarSpinnerUniversities() {
         final ArrayList<String> comboU = new ArrayList<>();
         comboU.add("-Seleccione-");
         FireDatabase.getInstance().child("Utilities").child("Universities").addValueEventListener(new ValueEventListener() {
@@ -155,17 +156,17 @@ public class UserRegisterActivity extends BaseActivity {
         aUniversity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                Log.e("onItemSelected",""+position);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.e("onNothingSelected",""+parent.toString());
             }
         });
     }
 
-    private void LlenarAreas() {
+    private void llenarAreas() {
         final ArrayList<Area> comboA = new ArrayList<>();
         FireDatabase.getInstance().child("Utilities").child("Areas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -183,12 +184,12 @@ public class UserRegisterActivity extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",""+databaseError.getDetails());
             }
         });
     }
 
-    private void Register(){
+    private void registeUser(){
 
         if (!validateForm()) {
             return;
@@ -202,7 +203,7 @@ public class UserRegisterActivity extends BaseActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            ValidateUser(user);
+                            validateUser(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(UserRegisterActivity.this, "Authentication failed.",
@@ -214,12 +215,12 @@ public class UserRegisterActivity extends BaseActivity {
 
     }
 
-    private void ValidateUser(FirebaseUser user) {
+    private void validateUser(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
             Toast.makeText(UserRegisterActivity.this, "Registro "+user.getEmail(),
                     Toast.LENGTH_LONG).show();
-            RegisterUser();
+            registerUserFirebase();
             Intent intent = new Intent(UserRegisterActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
@@ -229,7 +230,7 @@ public class UserRegisterActivity extends BaseActivity {
         }
     }
 
-    private void RegisterUser(){
+    private void registerUserFirebase(){
         String[] areas = eAreas.getText().toString().split(",");
         ArrayList<Area> list = new ArrayList();
         for (int i = 0; i<areas.length;i++){

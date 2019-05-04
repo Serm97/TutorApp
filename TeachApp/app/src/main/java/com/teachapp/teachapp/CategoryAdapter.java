@@ -22,10 +22,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     public CategoryAdapter(Context mContext,List<Category> categoryList) {
         this.mContext = mContext;
-        this.categoryList = LoadIcons(categoryList);
+        this.categoryList = loadIcons(categoryList);
     }
 
-    private List<Category> LoadIcons(List<Category> categoryList) {
+    private List<Category> loadIcons(List<Category> categoryList) {
         for(Category cat : categoryList){
          switch (cat.getName().toLowerCase()){
              case "algebra":
@@ -105,10 +105,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titleCategory;
-        TextView contAreas;
-        ImageView iconView;
-        View elementView;
+        public TextView titleCategory;
+        public TextView contAreas;
+        public ImageView iconView;
+        public View elementView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

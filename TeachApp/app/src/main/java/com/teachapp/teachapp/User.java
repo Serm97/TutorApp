@@ -1,7 +1,5 @@
 package com.teachapp.teachapp;
 
-import android.support.v7.widget.RecyclerView;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

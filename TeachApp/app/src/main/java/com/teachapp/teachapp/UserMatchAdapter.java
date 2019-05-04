@@ -89,10 +89,10 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
 
     public class ViewHolderUserMatch extends RecyclerView.ViewHolder {
 
-        TextView nameUser,emailUser,universityUser,phoneUser,areasUser,matchRequest;
-        ImageView iconViewUser;
-        Button btnRequest;
-        View elementView;
+        public TextView nameUser,emailUser,universityUser,phoneUser,areasUser,matchRequest;
+        public ImageView iconViewUser;
+        public Button btnRequest;
+        public View elementView;
 
         public ViewHolderUserMatch(@NonNull View itemView) {
             super(itemView);

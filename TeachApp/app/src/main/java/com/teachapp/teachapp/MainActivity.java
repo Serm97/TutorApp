@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -91,7 +93,7 @@ public class MainActivity extends BaseActivity
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",databaseError.getDetails());
             }
         });
     }
@@ -166,7 +168,7 @@ public class MainActivity extends BaseActivity
             miFragment = new HistoryFragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_info) {
-
+            Toast.makeText(this,"Intentalo mas tarde",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_exit) {
             mAuth.signOut();
             Intent intent = new Intent(this,LoginActivity.class);

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
  * Use the {@link TutorialsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TutorialsFragment extends Fragment implements View.OnClickListener {
+public class TutorialsFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -109,11 +110,9 @@ public class TutorialsFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",""+databaseError.getDetails());
             }
         });
-
-
         return vista;
     }
 
@@ -141,10 +140,7 @@ public class TutorialsFragment extends Fragment implements View.OnClickListener 
         mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 
     /**
      * This interface must be implemented by activities that contain this
