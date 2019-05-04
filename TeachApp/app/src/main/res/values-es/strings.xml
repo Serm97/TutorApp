@@ -14,11 +14,11 @@
         completions."
     </string>
     <string name="title_activity_main">TeachApp</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Navegación</string>
     <string name="action_settings">Ajustes</string>
     <string name="user_register">Registrarse</string>
     <string name="register">Registro</string>
@@ -36,12 +36,13 @@
     <string name="emailProfile">juaneperez@konradlorenz.edu.co</string>
     <string name="btnCalificar">Calificar</string>
     <string name="historial">Historial</string>
-    <string name="format_date">dd/mm/yyyy</string>
-    <string name="find_tutor">Find My Tutor</string>
-    <string name="landscape">Landscape</string>
-    <string name="Search">Search...</string>
-    <string name="request">Request</string>
-    <string name="areaR">Requested Area</string>
-    <string name="area_offered">Offered Area</string>
-    <string name="deadline">Deadline</string>
+    <string name="format_date">dd/mm/aaaa</string>
+    <string name="find_tutor">Encontrar un Tutor</string>
+    <string name="landscape">Horizontal</string>
+    <string name="Search">Buscar…</string>
+    <string name="request">Solicitar</string>
+    <string name="areaR">Área Solicitada</string>
+    <string name="area_offered">Área Ofrecida</string>
+    <string name="deadline">Fecha Limite</string>
+    <string name="send_request">Petición realizada!</string>
 </resources>

@@ -45,5 +45,6 @@
     <string name="areaR">Requested Area</string>
     <string name="area_offered">Offered Area</string>
     <string name="deadline">Deadline</string>
+    <string name="send_request">Request made!</string>
 
 </resources>

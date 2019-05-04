@@ -12,7 +12,9 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:elevation="3dp"
-        card_view:cardCornerRadius="@dimen/card_category_radius">
+        card_view:cardCornerRadius="@dimen/card_category_radius"
+        android:background="@drawable/btn"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,6 +26,7 @@
                 android:layout_height="@dimen/category_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:padding="10dp"
                 android:scaleType="fitXY" />
 
             <TextView
