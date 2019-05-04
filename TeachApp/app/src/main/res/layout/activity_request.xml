@@ -35,14 +35,16 @@
             <TextView
                 style="@style/h1"
                 android:text="Request Tutorial"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"></TextView>
+                android:layout_marginTop="8dp"
+                ></TextView>
 
             <com.example.comboboxtest.ComboBox
                 style="?android:attr/spinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
                 >
 
                 <TextView
@@ -76,12 +78,14 @@
                     android:hint="Specific topic"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                   android:layout_marginHorizontal="30dp"/>
 
             <com.example.comboboxtest.ComboBox
                 style="?android:attr/spinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
                 >
 
                 <TextView
@@ -116,7 +120,8 @@
                 android:inputType="date"
                 android:hint="@string/format_date"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="32dp"/>
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="30dp"/>
 
             <EditText
                 android:id="@+id/request_dateEnd"
@@ -124,7 +129,8 @@
                 android:inputType="date"
                 android:hint="@string/format_date"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="30dp"
                 />
 
             <EditText
@@ -133,7 +139,8 @@
                 android:inputType="time"
                 android:hint="@string/format_hour"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="32dp"/>
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="30dp"/>
 
             <EditText
                 android:id="@+id/request_timeEnd"
@@ -141,23 +148,11 @@
                 android:inputType="time"
                 android:hint="@string/format_hour"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="32dp"/>
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="32dp"/>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/password"
-                    style="@style/input"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

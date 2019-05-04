@@ -25,7 +25,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <ImageView
                     android:id="@+id/icon_user"
@@ -46,31 +47,36 @@
                         android:id="@+id/text_name_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/category_title" />
+                        android:textSize="@dimen/category_title"
+                        card_view:fontFamily="@font/dosis_medium" />
 
                     <TextView
                         android:id="@+id/text_university_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count" />
+                        android:textSize="@dimen/info_count"
+                        card_view:fontFamily="@font/dosis_medium" />
 
                     <TextView
                         android:id="@+id/text_email_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count" />
+                        android:textSize="@dimen/info_count"
+                        card_view:fontFamily="@font/dosis_medium" />
 
                     <TextView
                         android:id="@+id/text_phone_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count" />
+                        android:textSize="@dimen/info_count"
+                        card_view:fontFamily="@font/dosis_medium" />
 
                     <TextView
                         android:id="@+id/text_areas_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count" />
+                        android:textSize="@dimen/info_count"
+                        card_view:fontFamily="@font/dosis_medium" />
 
                 </LinearLayout>
 

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/seekerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".SeekerFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="5dp"
@@ -18,13 +18,14 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView"
             style="@style/h1"
             android:layout_marginVertical="50dp"
-            android:text="@string/buscar_tutoria"
+            android:text="@string/find_tutor"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +36,7 @@
             android:id="@+id/textView2"
             style="@style/input"
             android:layout_marginHorizontal="70px"
-            android:text="Area Solicitada" />
+            android:text="@string/areaR" />
 
         <Spinner
             android:id="@+id/spinnerAreaS"
@@ -44,9 +45,9 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_marginHorizontal="70px"
             style="@style/input"
-            android:text="Area Ofrecida"/>
+            android:layout_marginHorizontal="70px"
+            android:text="@string/area_offered" />
 
         <Spinner
             android:id="@+id/spinnerAreaO"
@@ -57,19 +58,19 @@
             android:id="@+id/textView4"
             style="@style/input"
             android:layout_marginHorizontal="70px"
-            android:text="Fecha Limite" />
+            android:text="@string/deadline" />
 
         <EditText
             android:id="@+id/editDateLimit"
-            android:layout_marginHorizontal="70px"
             style="@style/input"
+            android:layout_marginHorizontal="70px"
             android:ems="10"
             android:inputType="date" />
 
         <Button
             android:id="@+id/btn_find_tutorial"
             style="@style/btnBlue"
-            android:text="Solicitar" />
+            android:text="@string/request" />
     </LinearLayout>
 
 

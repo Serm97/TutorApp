@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/scoreProfile"
-                android:layout_width="wrap_content"
+                android:layout_width="133dp"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@android:drawable/btn_star_big_off"
                 android:drawableRight="@android:drawable/btn_star_big_on"
@@ -53,14 +53,14 @@
 
             <TextView
                 android:id="@+id/areasProfile"
-                android:layout_width="156dp"
-                android:layout_height="142dp"
+                android:layout_width="150dp"
+                android:layout_height="176dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginBottom="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"

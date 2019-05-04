@@ -24,17 +24,17 @@
                 <EditText
                     android:id="@+id/text_search_home"
                     style="@style/input"
-                    android:layout_width="333dp"
+                    android:layout_width="635dp"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/button_search_home"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="3dp"
                     android:width="15dp"
-                    android:hint="@string/Search"
-                    android:textColorLink="@color/blue_500"
+                    android:hint="Buscar..."
                     android:inputType="text"
                     android:padding="@dimen/activity_horizontal_margin"
-                    android:paddingTop="16dp"
-                    android:layout_alignParentLeft="true" />
+                    android:paddingTop="16dp" />
 
                 <ImageButton
                     android:id="@+id/button_search_home"
@@ -43,16 +43,17 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/btn2"/>
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    android:background="@drawable/btn2" />
 
             </RelativeLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -77,7 +78,8 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="match_parent"

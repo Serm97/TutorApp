@@ -37,5 +37,11 @@
     <string name="btnCalificar">Calificar</string>
     <string name="historial">Historial</string>
     <string name="format_date">dd/mm/yyyy</string>
-    <string name="buscar_tutoria">Find My Tutor</string>
+    <string name="find_tutor">Find My Tutor</string>
+    <string name="landscape">Landscape</string>
+    <string name="Search">Search...</string>
+    <string name="request">Request</string>
+    <string name="areaR">Requested Area</string>
+    <string name="area_offered">Offered Area</string>
+    <string name="deadline">Deadline</string>
 </resources>
