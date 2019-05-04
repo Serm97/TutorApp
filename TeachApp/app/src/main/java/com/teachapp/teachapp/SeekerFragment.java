@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -100,14 +98,14 @@ public class SeekerFragment extends Fragment {
         spinnerAS = (Spinner) vista.findViewById(R.id.spinnerAreaS);
         btnFind = (Button) vista.findViewById(R.id.btn_find_tutorial);
 
-        LoadRequestArea();
-        LoadOfferedArea();
-        LoadCalendar();
-        LoadRequest();
+        loadRequestArea();
+        loadOfferedArea();
+        loadCalendar();
+        loadRequest();
         return vista;
     }
 
-    private void LoadRequest() {
+    private void loadRequest() {
         final ArrayList<User> users = new ArrayList<>();
 
         Bundle mybundle = getActivity().getIntent().getExtras();
@@ -157,7 +155,7 @@ public class SeekerFragment extends Fragment {
         });
     }
 
-    private void LoadOfferedArea() {
+    private void loadOfferedArea() {
         final ArrayList<String> areasUser = new ArrayList<>();
         areasUser.add("-Seleccione-");
         Bundle mybundle = getActivity().getIntent().getExtras();
@@ -197,7 +195,7 @@ public class SeekerFragment extends Fragment {
         });
     }
 
-    private void LoadRequestArea() {
+    private void loadRequestArea() {
         final ArrayList<String> comboA = new ArrayList<>();
         comboA.add("-Seleccione-");
         FireDatabase.getInstance().child("Utilities").child("Areas").addValueEventListener(new ValueEventListener() {
@@ -230,7 +228,7 @@ public class SeekerFragment extends Fragment {
         });
     }
 
-    private void LoadCalendar() {
+    private void loadCalendar() {
         editFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,7 +250,7 @@ public class SeekerFragment extends Fragment {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month=month+1;
+                month+=1;
                 String y = String.valueOf(year);
                 String m = String.valueOf(month < 10 ? "0"+month : month);
                 String d = String.valueOf(dayOfMonth < 10 ? "0"+dayOfMonth:dayOfMonth);

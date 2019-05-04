@@ -105,24 +105,24 @@ public class ProfileFragment extends Fragment {
         if (getArguments() != null){
             if (getArguments().getSerializable("mainUser") != null){
                 user = (User)getArguments().getSerializable("mainUser");
-                LoadInfoUser(user);
+                loadInfoUser(user);
                 btnRequest.setVisibility(View.GONE);
             } else if (getArguments().getSerializable("userToView") != null){
                 user = (User)getArguments().getSerializable("userToView");
-                LoadInfoUser(user);
+                loadInfoUser(user);
                 btnRequest.setVisibility(View.VISIBLE);
             }
         }
         btnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenDialogRequest();
+                openDialogRequest();
             }
         });
         return view;
     }
 
-    private void OpenDialogRequest() {
+    private void openDialogRequest() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.fragment_seeker);
         dialog.setTitle("Solicitar");
@@ -149,7 +149,9 @@ public class ProfileFragment extends Fragment {
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
         });
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboA);
         spinnerAS.setAdapter(adapter);
@@ -157,7 +159,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("onNothingSelected","No hay nada seleccionado");
+            }
         });
 
         //Area Ofrecida
@@ -181,7 +185,9 @@ public class ProfileFragment extends Fragment {
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
         });
         ArrayAdapter<String> adapterO = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboO);
         spinnerAO.setAdapter(adapterO);
@@ -189,7 +195,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("onNothingSelected","No hay nada seleccionado");
+            }
         });
 
         //Open Calendar
@@ -214,7 +222,7 @@ public class ProfileFragment extends Fragment {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month=month+1;
+                month+=1;
                 String y = String.valueOf(year);
                 String m = String.valueOf(month < 10 ? "0"+month : month);
                 String d = String.valueOf(dayOfMonth < 10 ? "0"+dayOfMonth:dayOfMonth);
@@ -230,7 +238,7 @@ public class ProfileFragment extends Fragment {
                         users.get(0),
                         new Area(spinnerAO.getSelectedItem().toString()),
                         new Area(spinnerAS.getSelectedItem().toString()),
-                        new java.util.Date(editFecha.getText().toString())
+                        new Date(editFecha.getText().toString())
                 );
                 Notification not = new Notification(
                         user,
@@ -249,7 +257,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-    private void LoadInfoUser(User user) {
+    private void loadInfoUser(User user) {
         String name = user.getName() != null ? user.getName() : "";
         name += user.getLastName() != null ? " "+user.getLastName() : "";
         String email = "Correo: "+(user.getEmail() != null ? user.getEmail() : " - ");
