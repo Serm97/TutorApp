@@ -33,7 +33,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRequest viewHolderRequest, int i) {
         final Request req = lstRequest.get(i);
-        viewHolderRequest.areaO.setText("Conocimiento ofrecido: "+req.getAreaO().getName());
+            viewHolderRequest.areaO.setText("Conocimiento ofrecido: "+req.getAreaO().getName());
         viewHolderRequest.areaR.setText("Conocimiento Solicitado: "+req.getAreaS().getName());
         if (req.getState() == 0){
             viewHolderRequest.btnSearch.setVisibility(View.VISIBLE);
