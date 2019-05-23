@@ -253,7 +253,16 @@ public class UserRegisterActivity extends BaseActivity {
     private boolean validateForm() {
         boolean valid = true;
 
-        String name = aName.getText().toString();
+        String name = aName.getText().toString();;
+        String lastname = aLastName.getText().toString();
+        String phone = aPhone.getText().toString();
+        String email = aEmail.getText().toString();
+        String dateBirth = aBirthdate.getText().toString();
+        String college = aUniversity.getSelectedItem().toString();
+        String password = ePassword.getText().toString();
+        String areas = eAreas.getText().toString();
+
+        //Name
         if (TextUtils.isEmpty(name)) {
             aName.setError("Required.");
             valid = false;
@@ -261,12 +270,7 @@ public class UserRegisterActivity extends BaseActivity {
             aName.setError(null);
         }
 
-        String college = aUniversity.getSelectedItem().toString();
-        if (TextUtils.isEmpty(college) || college.equals("-Seleccione-")) {
-            valid = false;
-        }
-
-        String lastname = aLastName.getText().toString();
+        //LastName
         if (TextUtils.isEmpty(lastname)) {
             aLastName.setError("Required.");
             valid = false;
@@ -274,15 +278,51 @@ public class UserRegisterActivity extends BaseActivity {
             aLastName.setError(null);
         }
 
-        String email = aEmail.getText().toString();
+        //Phone
+        if (TextUtils.isEmpty(phone)) {
+            aPhone.setError("Required.");
+            valid = false;
+        } else if (phone.length() < 10){
+            aPhone.setError("Phone is too short.");
+            valid = false;
+        }else {
+            aPhone.setError(null);
+        }
+
+       //Email
         if (TextUtils.isEmpty(email)) {
             aEmail.setError("Required.");
             valid = false;
-        } else {
+        } else if (!email.contains("@")){
+            aEmail.setError("This email address is invalid.");
+            valid = false;
+        }else {
             aEmail.setError(null);
         }
 
-        String password = ePassword.getText().toString();
+        //date birthday
+        if(TextUtils.isEmpty(dateBirth)){
+            aBirthdate.setError("Required.");
+            valid = false;
+        } else {
+            aBirthdate.setError(null);
+        }
+
+        //University
+        if (college.equals("-Seleccione-")) {
+            Toast.makeText(UserRegisterActivity.this,"Select a university",Toast.LENGTH_LONG).show();
+            valid = false;
+        }
+
+        //date birthday
+        if(TextUtils.isEmpty(areas)){
+            eAreas.setError("Required.");
+            valid = false;
+        } else {
+            eAreas.setError(null);
+        }
+
+        //Password
         if (TextUtils.isEmpty(password)) {
             ePassword.setError("Required.");
             valid = false;
