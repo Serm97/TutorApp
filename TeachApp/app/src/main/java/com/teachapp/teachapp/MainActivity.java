@@ -186,9 +186,9 @@ public class MainActivity extends BaseActivity
                     .beginTransaction()
                     .replace(R.id.content_main,miFragment)
                     .commit();
-            this.overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
-        }
 
+        }
+        this.overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
