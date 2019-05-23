@@ -23,13 +23,18 @@
 
                 <EditText
                     android:id="@+id/text_search_home"
-                    android:layout_width="300dp"
+                    style="@style/input"
+                    android:layout_width="333dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:hint="Buscar..."
+                    android:layout_alignTop="@+id/button_search_home"
+                    android:layout_alignParentStart="true"
+                    android:width="15dp"
+                    android:hint="@string/Search"
+                    android:textColorLink="@color/blue_500"
                     android:inputType="text"
+                    android:padding="@dimen/activity_horizontal_margin"
                     android:paddingTop="16dp"
-                    android:padding="@dimen/activity_horizontal_margin" />
+                    android:layout_alignParentLeft="true" />
 
                 <ImageButton
                     android:id="@+id/button_search_home"
@@ -40,8 +45,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@color/grey_100"
-                    android:src="@android:drawable/ic_search_category_default" />
+                    android:background="@drawable/btn2"/>
 
             </RelativeLayout>
 
@@ -49,23 +53,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_horizontal_margin"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="@string/category"
-                        android:drawableEnd="@android:drawable/ic_dialog_dialer"
-                        android:drawableTint="@android:color/background_dark"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:drawableRight="@android:drawable/ic_dialog_dialer" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:drawableEnd="@drawable/ic_widgets_black_24dp"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="@string/category"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/carter_one"
+                    android:drawableRight="@drawable/ic_widgets_black_24dp" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_categories"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:clipToPadding="false" />
+                        android:clipToPadding="false"
+                        android:layout_marginHorizontal="20dp"/>
 
                 </LinearLayout>
             <LinearLayout
@@ -73,23 +79,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_horizontal_margin"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Tutores"
-                        android:drawableEnd="@drawable/ic_action_user"
-                        android:drawableTint="@android:color/background_dark"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:drawableRight="@drawable/ic_action_user" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:drawableEnd="@drawable/ic_action_user"
+                    android:drawableRight="@drawable/ic_action_user"
+                    android:drawableTint="@android:color/background_dark"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="Tutores"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/carter_one" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_users"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:clipToPadding="false" />
+                        android:clipToPadding="false"
+                        android:layout_marginHorizontal="20dp"/>
 
                 </LinearLayout>
 

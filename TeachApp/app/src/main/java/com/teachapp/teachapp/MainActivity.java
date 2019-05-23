@@ -1,6 +1,7 @@
 package com.teachapp.teachapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -38,6 +39,8 @@ public class MainActivity extends BaseActivity
     private TextView userT;
     private TextView emailT;
     private User userGeneric;
+    SharedPreferences sharedPreference;
+    Integer theme = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,8 +171,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_history) {
             miFragment = new HistoryFragment();
             fragmentSeleccionado = true;
-        } else if (id == R.id.nav_info) {
-            Toast.makeText(this,"Intentalo mas tarde",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_exit) {
             mAuth.signOut();
             Intent intent = new Intent(this,LoginActivity.class);
@@ -188,6 +189,34 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    public void changeTheme(MenuItem item) {
+        String tema = "";
+        Log.e("DEBUGGGG", String.valueOf(theme));
+
+        switch (theme){
+            case 0:
+                setTheme(R.style.DarTheme_Theme);
+                theme = 1;
+                tema = "Dark Theme";
+                break;
+            case 1:
+                theme = 0;
+                setTheme(R.style.AppTheme);
+                tema = "Light Theme";
+                break;
+            default:
+                theme = 0;
+                setTheme(R.style.AppTheme);
+                tema = "Light Theme";
+
+        }
+
+
+        Toast.makeText(this, tema,
+                Toast.LENGTH_LONG).show();
+
     }
 
     @Override

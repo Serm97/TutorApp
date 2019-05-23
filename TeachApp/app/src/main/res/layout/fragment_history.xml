@@ -11,13 +11,13 @@
             android:orientation="vertical" >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:drawableStart="@android:drawable/ic_menu_set_as"
+                style="@style/h1"
+                android:textSize="30dp"
+                android:drawableStart="@drawable/ic_beenhere"
                 android:drawableLeft="@android:drawable/ic_menu_set_as"
-                android:drawableTint="@android:color/holo_blue_bright"
-                android:padding="@dimen/activity_horizontal_margin"
+                android:drawableTint="@color/blue_500"
+                android:gravity="start"
+                android:padding="28dp"
                 android:text="Request"
                 android:textAppearance="@android:style/TextAppearance.Holo.Large"
                 tools:ignore="UnusedAttribute" />
@@ -25,7 +25,8 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_request"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"/>
 
 
         </LinearLayout>

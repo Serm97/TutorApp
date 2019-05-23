@@ -27,10 +27,8 @@
     <item android:title="Additional">
         <menu>
             <item
-                android:id="@+id/nav_info"
-                android:title="Info" />
-            <item
                 android:id="@+id/nav_exit"
+                android:icon="@android:drawable/ic_lock_power_off"
                 android:title="Log out" />
         </menu>
     </item>

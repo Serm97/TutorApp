@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:elevation="3dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -31,21 +31,19 @@
 
                 <TextView
                     android:id="@+id/text_msg_notification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:layout_weight="1"
-                    android:text="Notificacion"
-                    android:textSize="@dimen/notification_title" />
+                    android:text="Notification"
+                    />
 
                 <TextView
                     android:id="@+id/text_date_notificacion"
-                    android:layout_width="match_parent"
+                    style="@style/input"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_gravity="end"
-                    android:textSize="10dp"
                     android:layout_weight="1"
-                    android:text="Notificacion"/>
+                    android:text=" "
+                    android:textAlignment="textEnd" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,15 +53,17 @@
 
                     <Button
                         android:id="@+id/button_accept"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/btnBlue"
+                        android:layout_marginHorizontal="15dp"
                         android:layout_weight="1"
+                        android:textSize="20sp"
                         android:text="Aceptar" />
 
                     <Button
                         android:id="@+id/button_refuse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/btnBlue"
+                        android:layout_marginHorizontal="15dp"
+                        android:textSize="20sp"
                         android:layout_weight="1"
                         android:text="Rechazar" />
                 </LinearLayout>

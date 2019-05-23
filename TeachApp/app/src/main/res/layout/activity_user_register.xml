@@ -9,8 +9,11 @@
 
     <ScrollView
         android:id="@+id/user_register_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="411dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/user_new_register_form"
@@ -20,142 +23,108 @@
             android:padding="10sp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="User Register"
-                android:textSize="30sp"
-                android:layout_margin="5pt"/>
+                style="@style/h1"
+                android:layout_margin="5pt"
+                android:text="Register Teach"
+                android:textSize="40sp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <AutoCompleteTextView
                     android:id="@+id/autName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Nombre"
                     android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <AutoCompleteTextView
                     android:id="@+id/autLastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Apellido"
                     android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <AutoCompleteTextView
                     android:id="@+id/autPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Telefono"
                     android:inputType="phone"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <AutoCompleteTextView
                     android:id="@+id/autEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <AutoCompleteTextView
                     android:id="@+id/autBirthDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Fecha Nacimiento"
                     android:inputType="date"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+
             <Spinner
                 android:id="@+id/spinnerU"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/inputOut"
+                android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Universidad"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:hint="Universidad" />
 
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/tiAreas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                style="@style/inputOut"
+                android:id="@+id/tiAreas">
 
                 <EditText
                     android:id="@+id/txtAreas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:hint="Conocimientos"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:onClick="openDialog" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout style="@style/inputOut">
 
                 <EditText
                     android:id="@+id/txtPasswordR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/input"
                     android:ems="10"
                     android:hint="@string/prompt_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textSize="20dp" />
 
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_register"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/btnBlue"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/register"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
-
+                android:text="@string/register" />
 
 
         </LinearLayout>

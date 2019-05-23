@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seekerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SeekerFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/h1"
+                android:layout_marginVertical="30dp"
+                android:text="@string/find_tutor"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/input"
+                android:layout_marginHorizontal="120px"
+                android:text="@string/areaR"
+                />
+
+            <Spinner
+                android:id="@+id/spinnerAreaS"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="40dp"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/input"
+                android:layout_marginHorizontal="120px"
+                android:text="@string/area_offered" />
+
+            <Spinner
+                android:id="@+id/spinnerAreaO"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="40dp"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/input"
+                android:layout_marginHorizontal="120px"
+                android:text="@string/deadline" />
+
+            <EditText
+                android:id="@+id/editDateLimit"
+                style="@style/input"
+                android:layout_marginHorizontal="120px"
+                android:ems="10"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/btn_find_tutorial"
+                style="@style/btnBlue"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/request" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
