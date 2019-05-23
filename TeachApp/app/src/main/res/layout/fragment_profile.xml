@@ -32,14 +32,13 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
-                app:srcCompat="@drawable/study" />
+                android:background="@android:color/background_light"
+                android:src="@mipmap/student"/>
 
             <TextView
                 android:id="@+id/scoreProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@android:drawable/btn_star_big_off"
-                android:drawableRight="@android:drawable/btn_star_big_on"
                 android:gravity="center_horizontal"
                 android:drawableRight="@android:drawable/btn_star_big_on"
                 android:text="@string/level"
@@ -49,20 +48,6 @@
                 android:drawableEnd="@android:drawable/btn_star_big_on"
                 android:padding="15sp"/>
 
-            <TextView
-                android:id="@+id/areasProfile"
-                android:layout_width="113dp"
-                android:layout_height="148dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginBottom="64dp"
-                android:padding="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold|italic"
-                app:fontFamily="@font/dosis_medium" />
 
 
         </RelativeLayout>
@@ -118,8 +103,15 @@
                 android:textSize="16sp"
                 android:padding="5dp"
                 android:textStyle="italic"
-                app:fontFamily="@font/dosis_medium" />
+                android:text="@string/numProfile" />
 
+            <TextView
+                android:id="@+id/areasProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold|italic"
+                android:textSize="20sp"
+                android:padding="10dp" />
 
             <Button
                 android:id="@+id/btnRequest"
