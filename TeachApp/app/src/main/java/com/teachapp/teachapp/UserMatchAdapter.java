@@ -44,7 +44,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
         viewHolderUserMatch.emailUser.setText(user.getEmail());
         viewHolderUserMatch.phoneUser.setText(user.getPhone());
         viewHolderUserMatch.areasUser.setText("Area solicitada: "+request.getAreaS().getName());
-        viewHolderUserMatch.iconViewUser.setImageResource(R.mipmap.student);
+        viewHolderUserMatch.iconViewUser.setImageResource(R.drawable.userstudent);
         if (mainRequest.getAreaO().getName().equals(request.getAreaS().getName())&&
                 mainRequest.getAreaS().getName().equals(request.getAreaO().getName())){
             viewHolderUserMatch.matchRequest.setVisibility(View.VISIBLE);

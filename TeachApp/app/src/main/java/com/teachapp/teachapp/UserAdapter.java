@@ -42,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
             areas += area.getName()+" ";
         }
         viewHolderUser.areasUser.setText(areas);
-        viewHolderUser.iconViewUser.setImageResource(R.mipmap.student);
+        viewHolderUser.iconViewUser.setImageResource(R.drawable.userstudent);
         viewHolderUser.elementView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

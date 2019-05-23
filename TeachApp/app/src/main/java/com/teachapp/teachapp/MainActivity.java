@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity
                 .beginTransaction()
                 .add(R.id.content_main,new CategoriesFragment())
                 .commit();
-
+        overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -113,8 +113,10 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         } else {
             super.onBackPressed();
+            overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         }
     }
 
@@ -175,13 +177,16 @@ public class MainActivity extends BaseActivity
             mAuth.signOut();
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         }
         if(fragmentSeleccionado){
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.content_main,miFragment)
                     .commit();
+            overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         }
 
 

@@ -23,6 +23,7 @@
             android:padding="10sp">
 
             <TextView
+                android:id="@+id/titleRegister"
                 style="@style/h1"
                 android:layout_margin="5pt"
                 android:text="Register Teach"

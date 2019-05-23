@@ -20,7 +20,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/ic_launcher_prodile" />
+        app:srcCompat="@drawable/teach" />
 
     <TextView
         android:id="@+id/txt_name_user"
@@ -30,14 +30,16 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:fontFamily="@font/carter_one" />
+        app:fontFamily="@font/carter_one"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txt_email_user"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:text="@string/nav_header_subtitle"
-        app:fontFamily="@font/archivo_narrow" />
+        app:fontFamily="@font/archivo_narrow"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

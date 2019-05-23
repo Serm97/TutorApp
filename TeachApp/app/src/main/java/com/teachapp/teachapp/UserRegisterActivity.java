@@ -12,13 +12,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,6 +58,11 @@ public class UserRegisterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
+
+        Animation fromBottom = AnimationUtils.loadAnimation(this,R.anim.frombottom);
+        Animation fromTop = AnimationUtils.loadAnimation(this,R.anim.fromtop);
+        TextView titleRegister = findViewById(R.id.titleRegister);
+        titleRegister.setAnimation(fromBottom);
 
         aName = (AutoCompleteTextView) findViewById(R.id.autName);
         aLastName = (AutoCompleteTextView) findViewById(R.id.autLastName);

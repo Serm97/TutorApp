@@ -27,7 +27,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/text_date_tutorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/category_title"
+                    card_view:fontFamily="@font/archivo_narrow"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/text_tutor_tutorial"
@@ -57,12 +66,7 @@
                     android:textSize="@dimen/category_title"
                     card_view:fontFamily="@font/archivo_narrow" />
 
-                <TextView
-                    android:id="@+id/text_date_tutorial"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/category_title"
-                    card_view:fontFamily="@font/archivo_narrow" />
+
 
                 </LinearLayout>
 
