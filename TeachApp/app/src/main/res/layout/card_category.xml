@@ -10,11 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/card_margin"
         android:elevation="3dp"
-        card_view:cardCornerRadius="@dimen/card_category_radius"
-        android:background="@drawable/btn"
-        >
+        card_view:cardCornerRadius="@dimen/card_category_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,7 +24,6 @@
                 android:layout_height="@dimen/category_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:padding="10dp"
                 android:scaleType="fitXY" />
 
             <TextView
@@ -38,8 +35,7 @@
                 android:paddingLeft="@dimen/category_title_padding"
                 android:paddingTop="@dimen/category_title_padding"
                 android:paddingRight="@dimen/category_title_padding"
-                android:textSize="@dimen/category_title"
-                card_view:fontFamily="@font/dosis_medium" />
+                android:textSize="@dimen/category_title" />
 
             <TextView
                 android:id="@+id/count_areas"
@@ -47,11 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_category"
                 android:gravity="center"
+                android:paddingBottom="@dimen/info_count_padding_bottom"
                 android:paddingLeft="@dimen/category_title_padding"
                 android:paddingRight="@dimen/category_title_padding"
-                android:paddingBottom="@dimen/info_count_padding_bottom"
-                android:textSize="@dimen/info_count"
-                card_view:fontFamily="@font/dosis_medium" />
+                android:textSize="@dimen/info_count" />
 
         </RelativeLayout>
 

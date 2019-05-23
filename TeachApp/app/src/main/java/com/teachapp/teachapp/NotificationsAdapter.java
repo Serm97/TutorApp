@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolderNotifications> {
@@ -55,7 +54,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         viewHolderNotifications.btnRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(mContext,"Tutoria Rechazada",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -67,8 +66,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     public class ViewHolderNotifications extends RecyclerView.ViewHolder {
 
-        TextView dateView,messageView;
-        Button btnAccept,btnRefuse;
+        public TextView dateView,messageView;
+        public Button btnAccept,btnRefuse;
 
         public ViewHolderNotifications(@NonNull View itemView) {
             super(itemView);

@@ -1,7 +1,5 @@
 package com.teachapp.teachapp;
 
-import android.support.v7.widget.RecyclerView;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -129,7 +127,7 @@ public class User implements Serializable {
     }
 }
 
-class Category{
+class Category implements Serializable{
     private String name;
     private List<Area> areas;
     private int icon;

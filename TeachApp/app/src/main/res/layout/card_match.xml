@@ -4,13 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/btn">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:elevation="3dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -58,23 +57,21 @@
                             android:id="@+id/text_name_user_M"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
                             android:gravity="center"
-                            android:textSize="@dimen/category_title"
+                            android:layout_gravity="center"
                             android:textStyle="bold"
-                            card_view:fontFamily="@font/dosis_medium" />
-
+                            android:textSize="@dimen/category_title"
+                            android:layout_weight="1"/>
                         <TextView
                             android:id="@+id/match_score"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4"
-                            android:drawableEnd="@android:drawable/btn_star_big_off"
-                            android:drawableRight="@android:drawable/btn_star_big_off"
                             android:gravity="center_horizontal"
+                            android:drawableRight="@android:drawable/btn_star_big_on"
                             android:textColor="@android:color/holo_orange_light"
-                            card_view:fontFamily="@font/dosis_medium" />
+                            android:drawableEnd="@android:drawable/btn_star_big_on"
+                            android:padding="3dp"
+                            android:layout_weight="4"/>
                     </LinearLayout>
 
 
@@ -82,36 +79,41 @@
                         android:id="@+id/text_university_user_M"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count"
-                        card_view:fontFamily="@font/dosis_medium" />
+                        android:textSize="@dimen/info_count" />
 
                     <TextView
                         android:id="@+id/text_email_user_M"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count"
-                        card_view:fontFamily="@font/dosis_medium" />
+                        android:textSize="@dimen/info_count" />
 
                     <TextView
                         android:id="@+id/text_phone_user_M"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count"
-                        card_view:fontFamily="@font/dosis_medium" />
+                        android:textSize="@dimen/info_count" />
 
                     <TextView
                         android:id="@+id/text_areas_user_M"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_count"
-                        card_view:fontFamily="@font/dosis_medium" />
+                        android:textSize="@dimen/info_count" />
 
                     <Button
                         android:id="@+id/button_match_request"
-                       style="@style/btnBlue"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:background="@android:color/holo_blue_dark"
                         android:text="@string/solProfile"
-                        android:textSize="20sp"
-                        android:layout_marginTop="5dp"/>
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        android:padding="3dp"
+                        android:textColor="#fff"
+                        android:drawableLeft="@android:drawable/presence_online"
+                        android:drawableStart="@android:drawable/presence_online"/>
 
                 </LinearLayout>
 

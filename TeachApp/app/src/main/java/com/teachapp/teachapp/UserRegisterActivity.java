@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,8 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -52,7 +48,7 @@ public class UserRegisterActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private TextInputLayout tiAreas;
 
-    DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,36 +63,36 @@ public class UserRegisterActivity extends BaseActivity {
         aUniversity = (Spinner) findViewById(R.id.spinnerU);
         ePassword = (EditText) findViewById(R.id.txtPasswordR);
         eAreas = (EditText) findViewById(R.id.txtAreas);
-        //tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
+        tiAreas = (TextInputLayout)  findViewById(R.id.tiAreas);
 
         Button btnRegisterUser = (Button) findViewById(R.id.btn_register);
 
-        LlenarSpinnerUniversities();
-        LlenarAreas();
-        AsignarCalendario();
+        llenarSpinnerUniversities();
+        llenarAreas();
+        asignarCalendario();
 
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hideKeyboard(view);
-                Register();
+                registeUser();
             }
         });
 
         mAuth = FirebaseAuth.getInstance();
     }
 
-    private void AsignarCalendario() {
-        aBirthdate.setOnClickListener(new View.OnClickListener() {
+    private void asignarCalendario() {
+        tiAreas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenCalendar();
+                openCalendar();
             }
         });
         aBirthdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenCalendar();
+                openCalendar();
             }
         });
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -111,7 +107,7 @@ public class UserRegisterActivity extends BaseActivity {
         };
     }
 
-    public void OpenCalendar(){
+    public void openCalendar(){
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -137,7 +133,7 @@ public class UserRegisterActivity extends BaseActivity {
         }
     }
 
-    private void LlenarSpinnerUniversities() {
+    private void llenarSpinnerUniversities() {
         final ArrayList<String> comboU = new ArrayList<>();
         comboU.add("-Seleccione-");
         FireDatabase.getInstance().child("Utilities").child("Universities").addValueEventListener(new ValueEventListener() {
@@ -160,17 +156,17 @@ public class UserRegisterActivity extends BaseActivity {
         aUniversity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                Log.e("onItemSelected",""+position);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.e("onNothingSelected",""+parent.toString());
             }
         });
     }
 
-    private void LlenarAreas() {
+    private void llenarAreas() {
         final ArrayList<Area> comboA = new ArrayList<>();
         FireDatabase.getInstance().child("Utilities").child("Areas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -188,12 +184,12 @@ public class UserRegisterActivity extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",""+databaseError.getDetails());
             }
         });
     }
 
-    private void Register(){
+    private void registeUser(){
 
         if (!validateForm()) {
             return;
@@ -207,7 +203,7 @@ public class UserRegisterActivity extends BaseActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            ValidateUser(user);
+                            validateUser(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(UserRegisterActivity.this, "Authentication failed.",
@@ -219,12 +215,12 @@ public class UserRegisterActivity extends BaseActivity {
 
     }
 
-    private void ValidateUser(FirebaseUser user) {
+    private void validateUser(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
             Toast.makeText(UserRegisterActivity.this, "Registro "+user.getEmail(),
                     Toast.LENGTH_LONG).show();
-            RegisterUser();
+            registerUserFirebase();
             Intent intent = new Intent(UserRegisterActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
@@ -234,7 +230,7 @@ public class UserRegisterActivity extends BaseActivity {
         }
     }
 
-    private void RegisterUser(){
+    private void registerUserFirebase(){
         String[] areas = eAreas.getText().toString().split(",");
         ArrayList<Area> list = new ArrayList();
         for (int i = 0; i<areas.length;i++){
@@ -257,7 +253,16 @@ public class UserRegisterActivity extends BaseActivity {
     private boolean validateForm() {
         boolean valid = true;
 
-        String name = aName.getText().toString();
+        String name = aName.getText().toString();;
+        String lastname = aLastName.getText().toString();
+        String phone = aPhone.getText().toString();
+        String email = aEmail.getText().toString();
+        String dateBirth = aBirthdate.getText().toString();
+        String college = aUniversity.getSelectedItem().toString();
+        String password = ePassword.getText().toString();
+        String areas = eAreas.getText().toString();
+
+        //Name
         if (TextUtils.isEmpty(name)) {
             aName.setError("Required.");
             valid = false;
@@ -265,12 +270,7 @@ public class UserRegisterActivity extends BaseActivity {
             aName.setError(null);
         }
 
-        String college = aUniversity.getSelectedItem().toString();
-        if (TextUtils.isEmpty(college) || college.equals("-Seleccione-")) {
-            valid = false;
-        }
-
-        String lastname = aLastName.getText().toString();
+        //LastName
         if (TextUtils.isEmpty(lastname)) {
             aLastName.setError("Required.");
             valid = false;
@@ -278,15 +278,51 @@ public class UserRegisterActivity extends BaseActivity {
             aLastName.setError(null);
         }
 
-        String email = aEmail.getText().toString();
+        //Phone
+        if (TextUtils.isEmpty(phone)) {
+            aPhone.setError("Required.");
+            valid = false;
+        } else if (phone.length() < 10){
+            aPhone.setError("Phone is too short.");
+            valid = false;
+        }else {
+            aPhone.setError(null);
+        }
+
+       //Email
         if (TextUtils.isEmpty(email)) {
             aEmail.setError("Required.");
             valid = false;
-        } else {
+        } else if (!email.contains("@")){
+            aEmail.setError("This email address is invalid.");
+            valid = false;
+        }else {
             aEmail.setError(null);
         }
 
-        String password = ePassword.getText().toString();
+        //date birthday
+        if(TextUtils.isEmpty(dateBirth)){
+            aBirthdate.setError("Required.");
+            valid = false;
+        } else {
+            aBirthdate.setError(null);
+        }
+
+        //University
+        if (college.equals("-Seleccione-")) {
+            Toast.makeText(UserRegisterActivity.this,"Select a university",Toast.LENGTH_LONG).show();
+            valid = false;
+        }
+
+        //date birthday
+        if(TextUtils.isEmpty(areas)){
+            eAreas.setError("Required.");
+            valid = false;
+        } else {
+            eAreas.setError(null);
+        }
+
+        //Password
         if (TextUtils.isEmpty(password)) {
             ePassword.setError("Required.");
             valid = false;
@@ -297,6 +333,7 @@ public class UserRegisterActivity extends BaseActivity {
         return valid;
     }
 
+    /*
     private void sendEmailVerification() {
 
         // Send verification email
@@ -321,7 +358,7 @@ public class UserRegisterActivity extends BaseActivity {
                 });
         // [END send_email_verification]
     }
-
+*/
     public void openDialog(View view) {
         hideKeyboard(view);
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(UserRegisterActivity.this);

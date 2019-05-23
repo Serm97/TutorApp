@@ -44,7 +44,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
         viewHolderUserMatch.emailUser.setText(user.getEmail());
         viewHolderUserMatch.phoneUser.setText(user.getPhone());
         viewHolderUserMatch.areasUser.setText("Area solicitada: "+request.getAreaS().getName());
-        viewHolderUserMatch.iconViewUser.setImageResource(R.drawable.studnt);
+        viewHolderUserMatch.iconViewUser.setImageResource(R.mipmap.student);
         if (mainRequest.getAreaO().getName().equals(request.getAreaS().getName())&&
                 mainRequest.getAreaS().getName().equals(request.getAreaO().getName())){
             viewHolderUserMatch.matchRequest.setVisibility(View.VISIBLE);
@@ -76,7 +76,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
                         mainRequest.getApplicant().getName()+" solicita una tutoria de "+mainRequest.getAreaS().getName(),
                         mainRequest);
                 FireDatabase.getInstance().child("Notifications").push().setValue(not);
-                Toast.makeText(mContext,R.string.send_request,Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext,"Petición realizada",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -89,10 +89,10 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
 
     public class ViewHolderUserMatch extends RecyclerView.ViewHolder {
 
-        TextView nameUser,emailUser,universityUser,phoneUser,areasUser,matchRequest;
-        ImageView iconViewUser;
-        Button btnRequest;
-        View elementView;
+        public TextView nameUser,emailUser,universityUser,phoneUser,areasUser,matchRequest;
+        public ImageView iconViewUser;
+        public Button btnRequest;
+        public View elementView;
 
         public ViewHolderUserMatch(@NonNull View itemView) {
             super(itemView);

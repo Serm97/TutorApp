@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolderRequest> {
@@ -35,7 +33,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRequest viewHolderRequest, int i) {
         final Request req = lstRequest.get(i);
-        viewHolderRequest.areaO.setText("Conocimiento ofrecido: "+req.getAreaO().getName());
+            viewHolderRequest.areaO.setText("Conocimiento ofrecido: "+req.getAreaO().getName());
         viewHolderRequest.areaR.setText("Conocimiento Solicitado: "+req.getAreaS().getName());
         if (req.getState() == 0){
             viewHolderRequest.btnSearch.setVisibility(View.VISIBLE);
@@ -67,8 +65,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
     public class ViewHolderRequest extends RecyclerView.ViewHolder {
 
-        TextView areaO,areaR;
-        Button btnSearch;
+        public TextView areaO,areaR;
+        public Button btnSearch;
 
         public ViewHolderRequest(@NonNull View itemView) {
             super(itemView);

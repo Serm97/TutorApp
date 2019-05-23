@@ -1,18 +1,15 @@
 package com.teachapp.teachapp;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +45,10 @@ public class CategoriesFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    View vista;
-    EditText textSearch;
-    ImageButton buttonSearch;
-    RecyclerView recyclerCategories,recyclerUsers;
-    final List<Category> categoryList = new ArrayList<>();
-    final List<User> userList = new ArrayList<>();
+    private EditText textSearch;
+    private RecyclerView recyclerCategories,recyclerUsers;
+    private final List<Category> categoryList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
 
 
 
@@ -91,63 +86,21 @@ public class CategoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_categories, container, false);
+        View vista = inflater.inflate(R.layout.fragment_categories, container, false);
 
         recyclerCategories = (RecyclerView) vista.findViewById(R.id.recycler_categories);
         recyclerUsers = (RecyclerView) vista.findViewById(R.id.recycler_users);
         textSearch = (EditText) vista.findViewById(R.id.text_search_home);
-        buttonSearch = (ImageButton) vista.findViewById(R.id.button_search_home);
+        ImageButton buttonSearch = (ImageButton) vista.findViewById(R.id.button_search_home);
 
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         Bundle mybundle = getActivity().getIntent().getExtras();
         final String email = mybundle.getString("nombreUsuario");
 
-//        final ArrayList<Category> cat = new ArrayList<>();
-        FireDatabase.getInstance().child("Utilities").child("Categories").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Category category = snapshot.getValue(Category.class);
-                    categoryList.add(category);
-                    //cat.add(category);
-                }
-                //recyclerCategories.setLayoutManager(new GridLayoutManager(getActivity(),2));
-                recyclerCategories.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerCategories.setItemAnimator(new DefaultItemAnimator());
-                CategoryAdapter adapter = new CategoryAdapter(getContext(),categoryList);
-
-                recyclerCategories.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        //Lista de ususarios
-        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User u = snapshot.getValue(User.class);
-                    if (!u.getEmail().equals(email)){
-                        userList.add(u);
-                    }
-                }
-                recyclerUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                recyclerUsers.setItemAnimator(new DefaultItemAnimator());
-                UserAdapter adapter = new UserAdapter(getContext(),userList);
-                recyclerUsers.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
+        loadCategories();
+        loadUsers(email);
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +118,52 @@ public class CategoriesFragment extends Fragment {
             }
         });
         return vista;
+    }
+
+    private void loadUsers(final String email) {
+        FireDatabase.getInstance().child("User").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User u = snapshot.getValue(User.class);
+                    if (!u.getEmail().equals(email)){
+                        userList.add(u);
+                    }
+                }
+                recyclerUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                recyclerUsers.setItemAnimator(new DefaultItemAnimator());
+                UserAdapter adapter = new UserAdapter(getContext(),userList);
+                recyclerUsers.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
+        });
+    }
+
+    private void loadCategories(){
+        FireDatabase.getInstance().child("Utilities").child("Categories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Category category = snapshot.getValue(Category.class);
+                    categoryList.add(category);
+                }
+                recyclerCategories.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerCategories.setItemAnimator(new DefaultItemAnimator());
+                CategoryAdapter adapter = new CategoryAdapter(getContext(),categoryList);
+
+                recyclerCategories.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

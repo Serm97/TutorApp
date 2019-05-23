@@ -1,24 +1,16 @@
 package com.teachapp.teachapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,11 +35,9 @@ public class MainActivity extends BaseActivity
         MatchFragment.OnFragmentInteractionListener{
 
     private FirebaseAuth mAuth;
-    TextView userT;
-    TextView emailT;
-    User userGeneric;
-    SharedPreferences sharedPreference;
-    Integer theme = 0;
+    private TextView userT;
+    private TextView emailT;
+    private User userGeneric;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +93,7 @@ public class MainActivity extends BaseActivity
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("onCancelled",databaseError.getDetails());
             }
         });
     }
@@ -112,6 +102,7 @@ public class MainActivity extends BaseActivity
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Log.e("User",currentUser.getEmail());
     }
 
     @Override
@@ -138,6 +129,10 @@ public class MainActivity extends BaseActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -173,6 +168,8 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_history) {
             miFragment = new HistoryFragment();
             fragmentSeleccionado = true;
+        } else if (id == R.id.nav_info) {
+            Toast.makeText(this,"Intentalo mas tarde",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_exit) {
             mAuth.signOut();
             Intent intent = new Intent(this,LoginActivity.class);
@@ -195,34 +192,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
-    }
-
-    public void changeTheme(MenuItem item) {
-        String tema = "";
-        Log.e("DEBUGGGG", String.valueOf(theme));
-
-        switch (theme){
-            case 0:
-                setTheme(R.style.DarTheme_Theme);
-                theme = 1;
-                tema = "Dark Theme";
-                break;
-            case 1:
-                theme = 0;
-                setTheme(R.style.AppTheme);
-                tema = "Light Theme";
-                break;
-            default:
-                theme = 0;
-                setTheme(R.style.AppTheme);
-                tema = "Light Theme";
-
-        }
-
-
-        Toast.makeText(this, tema,
-                Toast.LENGTH_LONG).show();
 
     }
 }

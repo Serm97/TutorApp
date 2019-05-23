@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -33,18 +32,18 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/h1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
                 android:text="Request Tutorial"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                ></TextView>
 
             <com.example.comboboxtest.ComboBox
                 style="?android:attr/spinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
                 >
 
                 <TextView
@@ -78,14 +77,12 @@
                     android:hint="Specific topic"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                   android:layout_marginHorizontal="30dp"/>
+                    android:singleLine="true" />
 
             <com.example.comboboxtest.ComboBox
                 style="?android:attr/spinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
                 >
 
                 <TextView
@@ -112,47 +109,71 @@
 
             </com.example.comboboxtest.ComboBox>
 
-
+            </android.support.design.widget.TextInputLayout>
 
             <EditText
                 android:id="@+id/request_dateStart"
-                style="@style/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
                 android:inputType="date"
                 android:hint="@string/format_date"
+                android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="32dp"
-                android:layout_marginHorizontal="30dp"/>
+                />
 
             <EditText
                 android:id="@+id/request_dateEnd"
-                style="@style/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
                 android:inputType="date"
                 android:hint="@string/format_date"
+                android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="12dp"
-                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="32dp"
                 />
 
             <EditText
                 android:id="@+id/request_timeInit"
-                style="@style/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
                 android:inputType="time"
                 android:hint="@string/format_hour"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="12dp"
-                android:layout_marginHorizontal="30dp"/>
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
             <EditText
                 android:id="@+id/request_timeEnd"
-                style="@style/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
                 android:inputType="time"
                 android:hint="@string/format_hour"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="12dp"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="32dp"/>
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,21 +182,27 @@
 
                 <Button
                     android:id="@+id/email_sign_in_button"
-                    style="@style/btnBlue"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:background="#888888"
                     android:text="Cancelar"
-                    android:textStyle="bold"
-                    android:layout_width="180dp"
-                    android:background="@drawable/btn"
-                    android:textColor="@color/blue_500"
-                    android:layout_marginHorizontal="10dp"/>
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/request_tutorial"
-                    style="@style/btnBlue"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorPrimary"
                     android:text="Send Request"
                     android:textColor="@android:color/background_light"
-                    android:layout_width="180dp"
-                    android:layout_marginHorizontal="0dp" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

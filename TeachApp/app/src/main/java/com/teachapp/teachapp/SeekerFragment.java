@@ -26,7 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -49,12 +48,11 @@ public class SeekerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    View vista;
-    EditText editFecha;
-    Spinner spinnerAO;
-    Spinner spinnerAS;
-    Button btnFind;
-    DatePickerDialog.OnDateSetListener mDateSetListener;
+    private EditText editFecha;
+    private Spinner spinnerAO;
+    private Spinner spinnerAS;
+    private Button btnFind;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private OnFragmentInteractionListener mListener;
 
@@ -92,22 +90,23 @@ public class SeekerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_seeker, container, false);
+        View vista = inflater.inflate(R.layout.fragment_seeker, container, false);
         ((BaseActivity)getActivity()).hideKeyboard(vista);
         editFecha = (EditText) vista.findViewById(R.id.editDateLimit);
         spinnerAO = (Spinner) vista.findViewById(R.id.spinnerAreaO);
         spinnerAS = (Spinner) vista.findViewById(R.id.spinnerAreaS);
         btnFind = (Button) vista.findViewById(R.id.btn_find_tutorial);
 
-        LoadRequestArea();
-        LoadOfferedArea();
-        LoadCalendar();
-        LoadRequest();
+        loadRequestArea();
+        loadOfferedArea();
+        loadCalendar();
+        loadRequest();
         return vista;
     }
 
-    private void LoadRequest() {
+    private void loadRequest() {
         final ArrayList<User> users = new ArrayList<>();
 
         Bundle mybundle = getActivity().getIntent().getExtras();
@@ -157,7 +156,7 @@ public class SeekerFragment extends Fragment {
         });
     }
 
-    private void LoadOfferedArea() {
+    private void loadOfferedArea() {
         final ArrayList<String> areasUser = new ArrayList<>();
         areasUser.add("-Seleccione-");
         Bundle mybundle = getActivity().getIntent().getExtras();
@@ -197,7 +196,7 @@ public class SeekerFragment extends Fragment {
         });
     }
 
-    private void LoadRequestArea() {
+    private void loadRequestArea() {
         final ArrayList<String> comboA = new ArrayList<>();
         comboA.add("-Seleccione-");
         FireDatabase.getInstance().child("Utilities").child("Areas").addValueEventListener(new ValueEventListener() {
@@ -220,17 +219,17 @@ public class SeekerFragment extends Fragment {
         spinnerAS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                Log.e("onItemSelected","Seleccionado");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.e("onItemSelected","No se selecciono nada");
             }
         });
     }
 
-    private void LoadCalendar() {
+    private void loadCalendar() {
         editFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,7 +251,7 @@ public class SeekerFragment extends Fragment {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month=month+1;
+                month+=1;
                 String y = String.valueOf(year);
                 String m = String.valueOf(month < 10 ? "0"+month : month);
                 String d = String.valueOf(dayOfMonth < 10 ? "0"+dayOfMonth:dayOfMonth);

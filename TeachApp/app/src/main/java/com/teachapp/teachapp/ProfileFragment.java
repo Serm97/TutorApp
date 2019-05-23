@@ -50,10 +50,12 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private User user;
-    private Button btnRequest;
     private TextView nameView,emailView,cityView,universityView,numberTView,areasView,scoreView;
-    DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
     private OnFragmentInteractionListener mListener;
+    private EditText editFecha;
+    private Spinner spinnerAO;
+    private Spinner spinnerAS;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -100,97 +102,42 @@ public class ProfileFragment extends Fragment {
         areasView =(TextView) view.findViewById(R.id.areasProfile);
         numberTView=(TextView) view.findViewById(R.id.numberTutProfile);
         scoreView=(TextView) view.findViewById(R.id.scoreProfile);
-        btnRequest=(Button) view.findViewById(R.id.btnRequest);
+        Button btnRequest = (Button) view.findViewById(R.id.btnRequest);
+
+
 
         if (getArguments() != null){
             if (getArguments().getSerializable("mainUser") != null){
                 user = (User)getArguments().getSerializable("mainUser");
-                LoadInfoUser(user);
+                loadInfoUser(user);
                 btnRequest.setVisibility(View.GONE);
             } else if (getArguments().getSerializable("userToView") != null){
                 user = (User)getArguments().getSerializable("userToView");
-                LoadInfoUser(user);
+                loadInfoUser(user);
                 btnRequest.setVisibility(View.VISIBLE);
             }
         }
         btnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenDialogRequest();
+                openDialogRequest();
             }
         });
         return view;
     }
 
-    private void OpenDialogRequest() {
+    private void openDialogRequest() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.fragment_seeker);
         dialog.setTitle("Solicitar");
-
-        final EditText editFecha = (EditText) dialog.findViewById(R.id.editDateLimit);
-        final Spinner spinnerAO = (Spinner) dialog.findViewById(R.id.spinnerAreaO);
-        final Spinner spinnerAS = (Spinner) dialog.findViewById(R.id.spinnerAreaS);
-        final Button btnFind = (Button) dialog.findViewById(R.id.btn_find_tutorial);
+        editFecha = (EditText) dialog.findViewById(R.id.editDateLimit);
+        spinnerAO = (Spinner) dialog.findViewById(R.id.spinnerAreaO);
+        spinnerAS = (Spinner) dialog.findViewById(R.id.spinnerAreaS);
 
         //Area Solicitada
-        final ArrayList<String> comboA = new ArrayList<>();
-        comboA.add("-Seleccione-");
-        Query q = FireDatabase.getInstance().child("User").orderByChild("email").equalTo(user.getEmail()).limitToFirst(1);
-        q.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
-                        User infoUser = dataSnap.getValue(User.class);
-                        for (Area a : infoUser.getAreas()){
-                            comboA.add(a.getName());
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        });
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboA);
-        spinnerAS.setAdapter(adapter);
-        spinnerAS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
-        });
-
+        loadAreasRequest();
         //Area Ofrecida
-        final ArrayList<String> comboO = new ArrayList<>();
-        final ArrayList<User> users = new ArrayList<>();
-        Bundle mybundle = getActivity().getIntent().getExtras();
-        String email = mybundle.getString("nombreUsuario");
-        comboO.add("-Seleccione-");
-        Query qq = FireDatabase.getInstance().child("User").orderByChild("email").equalTo(email).limitToFirst(1);
-        qq.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
-                        User infoUser = dataSnap.getValue(User.class);
-                        users.add(infoUser);
-                        for (Area a : infoUser.getAreas()){
-                            comboO.add(a.getName());
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        });
-        ArrayAdapter<String> adapterO = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboO);
-        spinnerAO.setAdapter(adapterO);
-        spinnerAO.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
-        });
+        loadAreasOffered(dialog);
 
         //Open Calendar
         editFecha.setOnClickListener(new View.OnClickListener() {
@@ -214,23 +161,62 @@ public class ProfileFragment extends Fragment {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month=month+1;
+                month+=1;
                 String y = String.valueOf(year);
                 String m = String.valueOf(month < 10 ? "0"+month : month);
                 String d = String.valueOf(dayOfMonth < 10 ? "0"+dayOfMonth:dayOfMonth);
                 editFecha.setText(d+"/"+m+"/"+y);
             }
         };
+        dialog.show();
+    }
+
+    private void loadAreasOffered(final Dialog dialog) {
+        final ArrayList<String> comboO = new ArrayList<>();
+        final ArrayList<User> users = new ArrayList<>();
+        Button btnFind = (Button) dialog.findViewById(R.id.btn_find_tutorial);
+
+        Bundle mybundle = getActivity().getIntent().getExtras();
+        String email = mybundle.getString("nombreUsuario");
+        comboO.add("-Seleccione-");
+        Query qq = FireDatabase.getInstance().child("User").orderByChild("email").equalTo(email).limitToFirst(1);
+        qq.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
+                        User infoUser = dataSnap.getValue(User.class);
+                        users.add(infoUser);
+                        for (Area a : infoUser.getAreas()){
+                            comboO.add(a.getName());
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
+        });
+        ArrayAdapter<String> adapterO = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboO);
+        spinnerAO.setAdapter(adapterO);
+        spinnerAO.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("onNothingSelected","No hay nada seleccionado");
+            }
+        });
 
         btnFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Request request = new Request(
                         users.get(0),
                         new Area(spinnerAO.getSelectedItem().toString()),
                         new Area(spinnerAS.getSelectedItem().toString()),
-                        new java.util.Date(editFecha.getText().toString())
+                        new Date(editFecha.getText().toString())
                 );
                 Notification not = new Notification(
                         user,
@@ -244,12 +230,44 @@ public class ProfileFragment extends Fragment {
                 dialog.hide();
             }
         });
-        dialog.show();
     }
 
+    private void loadAreasRequest() {
+        final ArrayList<String> comboA = new ArrayList<>();
+        comboA.add("-Seleccione-");
+        Query q = FireDatabase.getInstance().child("User").orderByChild("email").equalTo(user.getEmail()).limitToFirst(1);
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
+                        User infoUser = dataSnap.getValue(User.class);
+                        for (Area a : infoUser.getAreas()){
+                            comboA.add(a.getName());
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("onCancelled",""+databaseError.getDetails());
+            }
+        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,comboA);
+        spinnerAS.setAdapter(adapter);
+        spinnerAS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("onItemSelected","Item seleccionado");
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("onNothingSelected","No hay nada seleccionado");
+            }
+        });
+    }
 
-
-    private void LoadInfoUser(User user) {
+    private void loadInfoUser(User user) {
         String name = user.getName() != null ? user.getName() : "";
         name += user.getLastName() != null ? " "+user.getLastName() : "";
         String email = "Correo: "+(user.getEmail() != null ? user.getEmail() : " - ");

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -40,10 +39,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
         viewHolderUser.phoneUser.setText(user.getPhone());
         String areas = "";
         for (Area area : user.getAreas()){
-            areas += area.getName();
+            areas += area.getName()+" ";
         }
         viewHolderUser.areasUser.setText(areas);
-        viewHolderUser.iconViewUser.setImageResource(R.drawable.studnt);
+        viewHolderUser.iconViewUser.setImageResource(R.mipmap.student);
         viewHolderUser.elementView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,9 +68,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolderUser
 
     public class ViewHolderUser extends RecyclerView.ViewHolder {
 
-        TextView nameUser,emailUser,universityUser,phoneUser,areasUser;
-        ImageView iconViewUser;
-        View elementView;
+        public TextView nameUser,emailUser,universityUser,phoneUser,areasUser;
+        public ImageView iconViewUser;
+        public View elementView;
 
         public ViewHolderUser(@NonNull View itemView) {
             super(itemView);
