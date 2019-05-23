@@ -59,10 +59,9 @@ public class UserRegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
 
-        Animation fromBottom = AnimationUtils.loadAnimation(this,R.anim.frombottom);
-        Animation fromTop = AnimationUtils.loadAnimation(this,R.anim.fromtop);
+        Animation bounce= AnimationUtils.loadAnimation(this,R.anim.bounce);
         TextView titleRegister = findViewById(R.id.titleRegister);
-        titleRegister.setAnimation(fromBottom);
+        titleRegister.setAnimation(bounce);
 
         aName = (AutoCompleteTextView) findViewById(R.id.autName);
         aLastName = (AutoCompleteTextView) findViewById(R.id.autLastName);

@@ -46,13 +46,17 @@ public class LoginActivity extends BaseActivity {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mLoginFormView = findViewById(R.id.login_form);
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        final Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+                Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.mixed_anim);
+                mEmailSignInButton.startAnimation(animation);
             }
         });
+
+
 
         Button mUserRegister = (Button) findViewById(R.id.register_user);
         mUserRegister.setOnClickListener(new OnClickListener() {
@@ -109,7 +113,6 @@ public class LoginActivity extends BaseActivity {
             focusView.requestFocus();
         } else {
 
-            showProgressDialog();
             // [START sign_in_with_email]
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

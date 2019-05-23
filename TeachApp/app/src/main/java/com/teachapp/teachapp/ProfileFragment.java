@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +57,7 @@ public class ProfileFragment extends Fragment {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private OnFragmentInteractionListener mListener;
     private EditText editFecha;
+    private ImageView imageProfile;
     private Spinner spinnerAO;
     private Spinner spinnerAS;
 
@@ -102,7 +106,13 @@ public class ProfileFragment extends Fragment {
         areasView =(TextView) view.findViewById(R.id.areasProfile);
         numberTView=(TextView) view.findViewById(R.id.numberTutProfile);
         scoreView=(TextView) view.findViewById(R.id.scoreProfile);
+        imageProfile = view.findViewById(R.id.imageProfile);
+
         Button btnRequest = (Button) view.findViewById(R.id.btnRequest);
+
+        Animation animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.bounce);
+        imageProfile.startAnimation(animation);
+        scoreView.startAnimation(animation);
 
 
 
