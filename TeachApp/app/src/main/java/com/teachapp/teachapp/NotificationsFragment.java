@@ -77,7 +77,7 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista =inflater.inflate(R.layout.fragment_notifications, container, false);
+        final View vista =inflater.inflate(R.layout.fragment_notifications, container, false);
         recyclerNotfications = (RecyclerView) vista.findViewById(R.id.recycler_notifications);
 
         Bundle mybundle = getActivity().getIntent().getExtras();
@@ -100,6 +100,7 @@ public class NotificationsFragment extends Fragment {
                     NotificationsAdapter adapter = new NotificationsAdapter(getContext(),lstNotifications);
                     recyclerNotfications.setAdapter(adapter);
 
+
                 }else{
                     Toast.makeText(getActivity(),"No tienes Notificaciones",Toast.LENGTH_LONG).show();
                 }
@@ -113,6 +114,7 @@ public class NotificationsFragment extends Fragment {
 
         return vista;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

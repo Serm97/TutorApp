@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +37,16 @@ public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.ViewHo
         viewHolderTutorials.userView.setText("Estudiante: "+t.getApplicant().getName()+" "+t.getApplicant().getLastName());
         viewHolderTutorials.tutoView.setText("Tutor: "+t.getTutor().getName()+" "+t.getTutor().getLastName());
 
+        setFadeAnimation(viewHolderTutorials.itemView);
+
     }
+
+    private void setFadeAnimation(View view) {
+        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(2000);
+        view.startAnimation(anim);
+    }
+
 
     @Override
     public int getItemCount() {

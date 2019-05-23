@@ -6,6 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,13 +54,24 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
                 Toast.makeText(mContext,"Tutoria Programada",Toast.LENGTH_LONG).show();
             }
         });
+
+
         viewHolderNotifications.btnRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext,"Tutoria Rechazada",Toast.LENGTH_LONG).show();
             }
         });
+
+        //setFadeAnimation(viewHolderNotifications.itemView);
     }
+
+    private void setFadeAnimation(View view) {
+        AlphaAnimation anim = new AlphaAnimation(0.5f, 1.0f);
+        anim.setDuration(100);
+        view.startAnimation(anim);
+    }
+
 
     @Override
     public int getItemCount() {

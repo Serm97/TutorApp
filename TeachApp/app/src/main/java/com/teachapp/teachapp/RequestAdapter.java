@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -33,11 +34,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRequest viewHolderRequest, int i) {
         final Request req = lstRequest.get(i);
-            viewHolderRequest.areaO.setText("Conocimiento ofrecido: "+req.getAreaO().getName());
-        viewHolderRequest.areaR.setText("Conocimiento Solicitado: "+req.getAreaS().getName());
-        if (req.getState() == 0){
+        viewHolderRequest.areaO.setText("Conocimiento ofrecido: " + req.getAreaO().getName());
+        viewHolderRequest.areaR.setText("Conocimiento Solicitado: " + req.getAreaS().getName());
+        if (req.getState() == 0) {
             viewHolderRequest.btnSearch.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             viewHolderRequest.btnSearch.setVisibility(View.GONE);
         }
         viewHolderRequest.btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -45,17 +46,24 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             public void onClick(View v) {
                 Fragment fragment = new MatchFragment();
                 Bundle args = new Bundle();
-                args.putSerializable("requestMatch",req);
+                args.putSerializable("requestMatch", req);
                 fragment.setArguments(args);
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 activity.getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.content_main,fragment)
+                        .replace(R.id.content_main, fragment)
                         .commit();
             }
         });
 
+        setFadeAnimation(viewHolderRequest.itemView);
+    }
+
+    private void setFadeAnimation(View view) {
+        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(2000);
+        view.startAnimation(anim);
     }
 
     @Override
