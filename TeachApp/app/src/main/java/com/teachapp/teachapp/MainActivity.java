@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -187,14 +188,17 @@ public class MainActivity extends BaseActivity
                     .replace(R.id.content_main,miFragment)
                     .commit();
 
+
         }
-        this.overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }
+
 
     public void changeTheme(MenuItem item) {
         String tema = "";

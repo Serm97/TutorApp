@@ -51,12 +51,10 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
-                Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.mixed_anim);
+                Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.bounce);
                 mEmailSignInButton.startAnimation(animation);
             }
         });
-
-
 
         Button mUserRegister = (Button) findViewById(R.id.register_user);
         mUserRegister.setOnClickListener(new OnClickListener() {
