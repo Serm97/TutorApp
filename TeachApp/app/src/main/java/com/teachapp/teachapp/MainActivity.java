@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -114,9 +115,11 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            super.onBackPressed();
             overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         } else {
-            super.onBackPressed();
+            drawer.openDrawer(Gravity.START);
+
             overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
         }
     }
