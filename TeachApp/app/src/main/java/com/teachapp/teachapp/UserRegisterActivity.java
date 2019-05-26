@@ -258,6 +258,8 @@ public class UserRegisterActivity extends BaseActivity {
         Toast.makeText(UserRegisterActivity.this,"Usuario registrado",Toast.LENGTH_LONG).show();
     }
 
+
+
     private boolean validateForm() {
         boolean valid = true;
 
@@ -293,11 +295,21 @@ public class UserRegisterActivity extends BaseActivity {
         } else if (phone.length() < 10){
             aPhone.setError("Phone is too short.");
             valid = false;
+        }else if (phone.length() > 10){
+            aPhone.setError("Phone is too long.");
+            valid = false;
         }else {
-            aPhone.setError(null);
+            try {
+                Integer.parseInt(phone);
+                valid = true;
+                aPhone.setError(null);
+            } catch (NumberFormatException nfe){
+                aPhone.setError("Phone is not valid.");
+                valid = false;
+            }
         }
 
-       //Email
+        //Email
         if (TextUtils.isEmpty(email)) {
             aEmail.setError("Required.");
             valid = false;
@@ -340,6 +352,8 @@ public class UserRegisterActivity extends BaseActivity {
 
         return valid;
     }
+
+
 
     /*
     private void sendEmailVerification() {
